@@ -54,9 +54,6 @@ const SuperMenu = ({ isMenuOpen, toggleMenu }) => {
         <li>
           <a onClick={() => navigate('/super-about')}>About Us</a>
         </li>
-        <li>
-          <a onClick={() => navigate('/')}>Main Web</a>
-        </li>
       </ul>
 
       {/* Login / Logout Section with 3D Flip Card */}

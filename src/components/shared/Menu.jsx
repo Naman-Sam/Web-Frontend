@@ -39,7 +39,6 @@ const Menu = ({ isMenuOpen, toggleMenu }) => {
         <li><a onClick={() => navigate('/contact')}>Contact</a></li>
         <li><a onClick={() => navigate('/services')}>Services</a></li>
         <li><a onClick={() => navigate('/about')}>About Us</a></li>
-        <li><a onClick={() => navigate('/superdashboard')}>SuperDashboard</a></li>
       </ul>
 
       {/* Login / Logout Section with 3D Flip */}
