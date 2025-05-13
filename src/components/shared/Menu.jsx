@@ -36,7 +36,7 @@ const Menu = ({ isMenuOpen, toggleMenu }) => {
         <li><a onClick={() => handleProtectedNavigation('/cart')}>Cart</a></li>
         <li><a onClick={() => handleProtectedNavigation('/personal-info')}>Personal Info</a></li>
         <li><a onClick={() => handleProtectedNavigation('/CustomerCare')}>Help</a></li>
-        <li><a onClick={() => navigate('/contact')}>Contact</a></li>
+        <li><a onClick={() => handleProtectedNavigation('/contact')}>Contact</a></li>
         <li><a onClick={() => navigate('/services')}>Services</a></li>
         <li><a onClick={() => navigate('/about')}>About Us</a></li>
       </ul>
