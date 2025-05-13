@@ -31,7 +31,7 @@ const ReviewsSection = ({ BASE_URL, productId, showNotification }) => {
                 setFilteredReviews(fetchedReviews); // Initialize with all reviews
             } catch (err) {
                 console.error('Error fetching reviews:', err.message);
-                setError('Failed to load reviews. Please try again later.');
+                setError('.');
             } finally {
                 setLoadingReviews(false);
             }

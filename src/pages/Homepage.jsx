@@ -157,7 +157,6 @@ const Homepage = () => {
       />
       <PosterSection />
       <DiscoverSection />
-      <div className="homepage-test-note-up"> <h6>Note : This is just a Test Website products aren't real here .</h6></div>
 
       <main>
         {/* Newest Products Grid Section */}

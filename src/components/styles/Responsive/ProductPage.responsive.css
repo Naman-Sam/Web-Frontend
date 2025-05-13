@@ -69,14 +69,14 @@
     .thumbnails-wrapper {
       position: absolute;
       top: 70px;
-      max-height: 250px;
+      max-height: 180px;
       overflow: hidden; /* ensures the gradient overlay isn’t pushed by scrolling content */
       z-index: 10;
     }
     /* Container for Thumbnails */
 .left-thumbnails {
   top: 70px;
-  max-height: 250px; 
+  max-height: 180px; 
   overflow-y: auto;  /* Enables vertical scroll when content overflows */
 }
 

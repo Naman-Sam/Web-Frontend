@@ -65,7 +65,7 @@
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      width: 100px; /* Smaller size for mobile */
+      width: 130px; /* Smaller size for mobile */
       max-width: 100%; /* Prevent scaling issues */
       height: auto; /* Maintain aspect ratio */
     }
@@ -74,7 +74,7 @@
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
-        width: 100px; /* Smaller size for mobile */
+        width: 130px; /* Smaller size for mobile */
         max-width: 100%; /* Prevent scaling issues */
         height: auto; /* Maintain aspect ratio */
       }
