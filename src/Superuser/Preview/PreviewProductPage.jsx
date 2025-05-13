@@ -312,11 +312,13 @@ const PreviewProductPage = ({ BASE_URL, userId }) => {
               <div className="right-price">
                 {product?.is_discounted ? (
                   <>
-                    <span className="right-original-price">₹{product?.price.toFixed(2)}</span>
-                    <span className="right-discounted-price">
-                      ₹{(product?.price - product?.discount_amount).toFixed(2)}
-                    </span>
-                  </>
+                  <span className="right-original-price">
+                  ₹{(product?.price + product?.discount_amount).toFixed(2)}
+                  </span>
+                  <span className="right-discounted-price">
+                  ₹{product?.price.toFixed(2)}
+                  </span>
+                </>
                 ) : (
                   <span className="right-current-price">₹{product?.price.toFixed(2)}</span>
                 )}
