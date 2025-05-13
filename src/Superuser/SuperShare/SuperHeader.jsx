@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import logo from '../../components/imgs/logodare.PNG'; // Import your logo
+import logo from '../../components/imgs/logodare.png'; // Import your logo
 import '../../components/styles/Header.css'; // Import your CSS styles
 import '../../components/styles/Responsive/Header.responsive.css';
 import { wrapperFetch } from '../../utils/wrapperfetch';
