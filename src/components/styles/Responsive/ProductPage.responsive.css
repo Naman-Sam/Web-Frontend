@@ -1,0 +1,239 @@
+@media (max-width: 480px) {
+    /* Stack the main sections vertically and reduce overall spacing */
+    .content-container {
+      flex-direction: column;
+      gap: 15px;         /* A bit tighter gap on small screens */
+      margin: 5px auto;  /* Reduced margin */
+      padding: 5px;      /* Minimal padding */
+    }
+    /* Left Section adjustments for narrow screens */
+    .left-section {
+      width: 100%;
+      position: relative; /* Remove any sticky or fixed positioning */
+      top: auto;
+      padding: 8px;       /* Reduced padding for a compact look */
+      margin-bottom: 15px; /* Space between left and right sections */
+      box-shadow: none;   /* Optionally remove or lighten shadows */
+    }
+    .right-combo-note {
+        font-size: 12px;
+        color: rgb(25, 0, 255);
+      }
+    /* Main Image */
+    .left-main-image {
+      width: 70%;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      position: relative;
+      top: 3px;
+      left: 100px;
+      transition: transform 0.3s ease;
+    }
+    .type-option-button {
+        padding: 5px 10px;  /* Further reduce padding for small screens */
+        font-size: 12px;    /* Further reduce font size */
+      }
+      
+      .type-actions-container {
+        margin-top: 10px;
+        gap: 5px;
+      }
+      
+      .type-get-price-button,
+      .type-clear-button {
+        padding: 6px 12px;  /* More compact button padding */
+        font-size: 12px;    /* Smaller button text */
+      }
+      
+      .type-combo-price-display {
+        margin-top: 8px;
+        font-size: 14px;
+      }
+    /* Right Section becomes full-width in the flow, with natural scrolling */
+    .right-section {
+      width: 100%;
+      padding: 8px;
+      overflow-y: visible; /* Remove internal scrolling to let page scroll naturally */
+      max-height: none;    /* Remove height restriction */
+      box-shadow: none;    /* Optionally remove shadow for a cleaner look */
+    }
+    
+    /* Optionally adjust header and discover-section for readability */
+    .header,
+    .discover-section {
+      padding: 5px 10px;
+      font-size: 85%;  /* Scale down the font-size if needed */
+    }
+
+    .thumbnails-wrapper {
+      position: absolute;
+      top: 70px;
+      max-height: 250px;
+      overflow: hidden; /* ensures the gradient overlay isn’t pushed by scrolling content */
+      z-index: 10;
+    }
+    /* Container for Thumbnails */
+.left-thumbnails {
+  top: 70px;
+  max-height: 250px; 
+  overflow-y: auto;  /* Enables vertical scroll when content overflows */
+}
+
+/* Pseudo-element on the wrapper to provide a fixed gradient at the bottom */
+.thumbnails-wrapper::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40px; /* Adjust to match the desired gradient height */
+  
+  /* Gradient fades from transparent to opaque at the container's background color.
+     Update RGBA values if your background is different. */
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+  
+  pointer-events: none; /* Ensures the overlay doesn't interfere with interactions */
+} 
+
+/* Pseudo-element on the wrapper to provide a fixed gradient at the bottom */
+.thumbnails-wrapper::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40px; /* Adjust to match the desired gradient height */
+  
+  /* Gradient fades from transparent to opaque at the container's background color.
+     Update RGBA values if your background is different. */
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+  
+  pointer-events: none; /* Ensures the overlay doesn't interfere with interactions */
+} 
+
+    .left-thumbnail {
+        width: 65px;
+        height: 65px;
+        object-fit: cover;
+        border: 2px solid #ddd;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: border-color 0.3s ease, transform 0.3s ease;
+      }
+    
+    /* You might also want to adjust any other text or button sizes if they appear too large */
+    .left-back-button,
+    .left-add-to-cart-button,
+    .left-buy-now-button {
+      font-size: 14px;
+      padding: 8px 12px;
+    }
+  }
+  @media (max-width: 1024px) {
+    /* Stack the two main sections vertically */
+    .content-container {
+      flex-direction: column;
+      gap: 20px;
+      margin: 10px auto;
+      padding: 10px;
+    }
+    .right-combo-note {
+        font-size: 18px;
+        color: rgb(25, 0, 255);
+      }
+    /* Left Section (Static) Adjustments:
+       - Remove fixed flex-basis and sticky positioning
+       - Change width to 100% so it takes full available width */
+    .left-section {
+      flex: none;
+      width: 100%;
+      position: relative;  /* Remove sticky behavior */
+      top: auto;
+      padding: 10px;
+      margin-bottom: 20px; /* Space below to separate from right section */
+      box-shadow: none;    /* Optionally reduce or remove shadow */
+    }
+    
+    .thumbnails-wrapper {
+      position: absolute;
+      top: 70px;
+      left: 0%;
+      max-height: 400px;
+      overflow: hidden; /* ensures the gradient overlay isn’t pushed by scrolling content */
+      z-index: 10;
+    }
+    /* Right Section (Scrollable) Adjustments:
+       - Remove fixed width and individual scrolling behavior,
+       - Let the entire page scroll naturally */
+    .right-section {
+      flex: none;
+      width: 100%;
+      padding: 10px;
+      overflow-y: visible; /* Disable internal scrolling */
+      max-height: none;    /* Remove height restriction */
+      box-shadow: none;    /* Optionally reduce shadow */
+    }
+    
+    /* (Optionally) Adjust other elements for better readability */
+    .header,
+    .discover-section {
+      padding: 8px 15px;
+      font-size: 90%;
+    }
+  }
+/* Responsive Layout for Product Page on Small Screens */
+@media (max-width: 768px) {
+    /* Change Content Container from two-column flex to vertical layout */
+    .content-container {
+      flex-direction: column;
+      gap: 20px;       /* You can adjust gap if needed */
+      margin: 10px auto;
+      padding: 10px;
+    }
+    .type-option-button {
+        padding: 6px 12px;  /* Reduced padding */
+        font-size: 14px;    /* Smaller text */
+      }
+      .right-combo-note {
+        font-size: 14px;
+        color: rgb(25, 0, 255);
+      }
+      .type-actions-container {
+        margin-top: 15px;
+        gap: 8px;
+      }
+      
+      .type-get-price-button,
+      .type-clear-button {
+        padding: 8px 16px;  /* Slightly reduced padding */
+        font-size: 14px;    /* Reduce button font size */
+      }
+      
+      .type-combo-price-display {
+        margin-top: 10px;
+        font-size: 16px;
+      }
+    /* Left Section: Remove sticky positioning and let it span full width */
+    .left-section {
+      flex: none;              /* Remove fixed flex basis */
+      width: 100%;
+      position: relative;      /* Remove sticky behavior */
+      top: auto;               /* Reset top offset */
+      padding: 10px;           /* Adjust padding for mobile */
+      box-shadow: none;        /* Optionally remove or reduce shadow */
+      /* If desired, add a bottom margin to separate it from right section */
+      margin-bottom: 20px;
+    }
+    
+    /* Right Section: Remove individual scrolling so the whole page scrolls */
+    .right-section {
+      flex: none;            /* Remove fixed flex basis */
+      width: 100%;
+      padding: 10px;
+      overflow-y: visible;   /* Allow full-page scroll instead of internal scroll */
+      max-height: none;       /* Remove height restriction */
+      box-shadow: none;       /* Optionally adjust/remove shadow */
+    }
+  }
+      

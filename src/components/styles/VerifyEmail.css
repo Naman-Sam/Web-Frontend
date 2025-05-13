@@ -1,0 +1,111 @@
+/* Verify Email Container */
+.verify-email-container {
+    display: flex;
+    justify-content: center; /* Center the form horizontally */
+    align-items: center; /* Center the form vertically */
+    position: absolute;
+    top: 50%; /* Center relative to viewport */
+    left: 50%;
+    transform: translate(-50%, -50%); /* Perfect centering */
+    padding: 20px; /* Add consistent spacing */
+    background: white; /* Clean background */
+    border-radius: 15px; /* Rounded corners */
+    border: 1px solid #ddd; /* Subtle border for structure */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Depth effect */
+    width: auto; /* Adjust dynamically based on content */
+    height: auto; /* Adjust dynamically based on content */
+    transition: all 0.3s ease; /* Smooth transitions for resizing */
+}
+
+/* Hover Effect */
+.verify-email-container:hover {
+    Background: orange;
+    border-color: orange; /* Change border color to orange on hover */
+    box-shadow: 0 8px 20px rgba(255, 165, 0, 0.5); /* Add an orange glow for hover effect */
+}
+/* Verify Email Form */
+.verify-email-form {
+    width: 600px; /* Fixed width for desktop screens */
+    height: auto; /* Adjust dynamically based on content */
+    padding: 2.5rem; /* Add spacing inside the form */
+    background: white; /* Match container background */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    text-align: center; /* Center-align text */
+    display: flex;
+    flex-direction: column; /* Stack child elements vertically */
+    gap: 1.5rem; /* Space between elements */
+}
+
+/* Title Styling */
+.verify-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ff6f00; /* Orange for theme alignment */
+    margin-bottom: 1.5rem; /* Space below the title */
+}
+
+/* OTP Input Field */
+.otp-input {
+    width: 100%; /* Full width for OTP field */
+    padding: 0.8rem; /* Inner padding for text */
+    border: 1px solid #ddd; /* Neutral border */
+    border-radius: 8px; /* Rounded corners for consistency */
+    font-size: 1rem; /* Comfortable text size */
+    background: #f9f9f9; /* Subtle gray background */
+    transition: all 0.3s ease; /* Smooth hover and focus effects */
+}
+
+.otp-input:focus {
+    border-color: #ff6f00; /* Highlight border on focus */
+    box-shadow: 0 0 5px rgba(255, 111, 0, 0.5); /* Subtle glow effect */
+    outline: none; /* Remove default outline */
+}
+
+/* Verify Button */
+.verify-button {
+    background: #ff6f00; /* Vibrant orange for button */
+    color: white; /* White text for contrast */
+    padding: 0.9rem 1.5rem; /* Spacious button size */
+    border: none; /* Remove default border */
+    border-radius: 8px; /* Rounded corners for consistency */
+    font-size: 1rem; /* Comfortable text size */
+    font-weight: bold; /* Emphasize the button text */
+    cursor: pointer; /* Pointer cursor for interactivity */
+    transition: all 0.3s ease; /* Smooth hover effects */
+    width: 100%; /* Full width button for usability */
+}
+
+.verify-button:hover {
+    background: orange; /* Slightly lighter orange on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Lift effect */
+    transform: translateY(-2px); /* Minor lift on hover */
+}
+
+.verify-button:disabled {
+    background: #d6d6d6; /* Gray for disabled state */
+    cursor: not-allowed; /* Show disabled cursor */
+}
+
+/* Helper Links */
+.helper-links {
+    font-size: 0.9rem; /* Text size for links */
+    display: flex; /* Align links */
+    justify-content: center; /* Center the links */
+    gap: 15rem; /* Space between links */
+    margin-top: 1rem; /* Add spacing above links */
+}
+
+.resend-otp,
+.back-to-signup {
+    color: #007bff; /* Blue for links */
+    cursor: pointer; /* Pointer cursor for interactivity */
+    transition: color 0.3s ease; /* Smooth hover effect */
+}
+
+.resend-otp:hover,
+.back-to-signup:hover {
+    color: #0056b3; /* Darker blue on hover */
+    text-decoration: underline; /* Optional underline */
+}
+

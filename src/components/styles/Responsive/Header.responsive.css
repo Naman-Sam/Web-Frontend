@@ -1,0 +1,110 @@
+/* Responsive Header */
+@media (max-width: 768px) {
+    .header {
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+  
+    .logo img {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 150px; /* Explicitly set a consistent size for the logo */
+      max-width: 100%; /* Prevent any unexpected scaling issues */
+      height: auto; /* Maintain aspect ratio */
+    }
+
+    .logo-super img {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 150px; /* Explicitly set a consistent size for the logo */
+        max-width: 100%; /* Prevent any unexpected scaling issues */
+        height: auto; /* Maintain aspect ratio */
+      }
+
+
+    .menu-bar button {
+      font-size: 20px; /* Adjust size for icons */
+    }
+  
+    .options {
+      gap: 15px; /* Increase spacing between icons */
+    }
+  
+    .option-item {
+      font-size: 0; /* Hide text */
+    }
+  
+    .option-item i {
+      font-size: 20px; /* Keep icons visible */
+    }
+    .account-dropdown {
+        position: absolute;
+        top: 80px; /* Adjust based on header height */
+        right: 40px; /* Align dropdown to the right */
+        background: #ffffff; /* White background for cleanliness */
+        padding: 1rem; /* Comfortable spacing inside */
+        border: 1px solid #ddd; /* Neutral border */
+        border-radius: 8px; /* Softer corners for a modern look */
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Subtle shadow for depth */
+        z-index: 10; /* Ensure dropdown appears above other elements */
+        min-width: 240px; /* Set a minimum width for uniformity */
+      }
+  }
+  
+  @media (max-width: 480px) {
+    .header {
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+  
+    .logo img {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px; /* Smaller size for mobile */
+      max-width: 100%; /* Prevent scaling issues */
+      height: auto; /* Maintain aspect ratio */
+    }
+
+    .logo-super img {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px; /* Smaller size for mobile */
+        max-width: 100%; /* Prevent scaling issues */
+        height: auto; /* Maintain aspect ratio */
+      }
+  
+    .menu-bar button {
+      font-size: 18px; /* Further adjust size for icons */
+    }
+  
+    .options {
+      gap: 20px; /* Increase spacing for clarity on mobile */
+    }
+  
+    .option-item {
+      font-size: 0; /* Ensure text is hidden */
+    }
+  
+    .option-item i {
+      font-size: 18px; /* Adjust icon size for mobile */
+    }
+    .account-dropdown {
+        position: absolute;
+        top: 80px; /* Adjust based on header height */
+        right: 40px; /* Align dropdown to the right */
+        background: #ffffff; /* White background for cleanliness */
+        padding: 1rem; /* Comfortable spacing inside */
+        border: 1px solid #ddd; /* Neutral border */
+        border-radius: 8px; /* Softer corners for a modern look */
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Subtle shadow for depth */
+        z-index: 10; /* Ensure dropdown appears above other elements */
+        min-width: 180px; /* Set a minimum width for uniformity */
+      }
+  }
+  

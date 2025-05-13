@@ -1,0 +1,53 @@
+/* ProductEditArticle.css */
+
+.product-edit-article-page {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+  }
+  
+  .article-content {
+    max-width: 800px;
+    margin: 80px auto 40px auto;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .back-button {
+    background-color: #FFA500;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+  
+  .article-content h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+  }
+  
+  .article-content h2 {
+    font-size: 1.75em;
+    margin-top: 30px;
+    color: #444;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 5px;
+  }
+  
+  .article-content p {
+    font-size: 1.1em;
+    line-height: 1.7;
+    color: #555;
+    margin-top: 10px;
+  }
+  
+  .article-content section {
+    margin-bottom: 30px;
+  }
+  

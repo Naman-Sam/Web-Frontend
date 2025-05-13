@@ -1,0 +1,166 @@
+
+/* Tablets and Small Devices (max-width: 768px) */
+@media (max-width: 768px) {
+    /* Adjust overall card spacing */
+    .opc-card {
+        margin-bottom: 15px;
+    }
+    
+    /* Header Adjustments */
+    .opc-header {
+        padding: 15px;
+    }
+    .opc-basic-info h3 {
+        font-size: 16px;
+    }
+    
+    /* Order Status Font */
+    .opc-status {
+        font-size: 13px;
+    }
+    
+    /* Summary Section */
+    .opc-summary {
+        gap: 15px;
+        font-size: 13px;
+    }
+    .opc-expand-indicator {
+        font-size: 11px;
+    }
+    
+    /* Detail Section */
+    .opc-details {
+        padding: 15px;
+    }
+    
+    /* Order Items Header */
+    .opc-items h4 {
+        font-size: 14px;
+    }
+    
+    /* Product Item Adjustments */
+    .opc-product-item {
+        padding: 14px;
+        gap: 12px;
+    }
+    
+    /* Product Thumbnail */
+    .opc-product-thumbnail {
+        width: 70px;
+        height: 70px;
+    }
+    
+    /* Product Information */
+    .opc-product-info h5 {
+        font-size: 14px;
+    }
+    .opc-product-info p {
+        font-size: 13px;
+    }
+    
+    /* Action Buttons */
+    .opc-actions {
+        margin-top: 15px;
+        gap: 10px;
+    }
+    .opc-cancel-button {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+    
+    /* Modal Adjustments */
+    .opc-modal-content {
+        max-width: 450px;
+        padding: 20px;
+    }
+    .opc-modal-content h3 {
+        font-size: 16px;
+    }
+    .opc-modal-footer {
+        margin-top: 15px;
+        gap: 10px;
+    }
+    .opc-confirm-cancel,
+    .opc-cancel-action {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+}
+
+/* Small Mobile Devices (max-width: 480px) */
+@media (max-width: 480px) {
+    .opc-card {
+        margin-bottom: 10px;
+    }
+    
+    .opc-header {
+        padding: 10px;
+    }
+    .opc-basic-info h3 {
+        font-size: 14px;
+    }
+    
+    .opc-status {
+        font-size: 12px;
+        padding: 3px 8px;
+    }
+    
+    .opc-summary {
+        font-size: 12px;
+        gap: 10px;
+    }
+    .opc-expand-indicator {
+        font-size: 10px;
+    }
+    
+    .opc-details {
+        padding: 10px;
+    }
+    
+    .opc-items h4 {
+        font-size: 13px;
+    }
+    
+    .opc-product-item {
+        padding: 10px;
+        gap: 10px;
+    }
+    
+    .opc-product-thumbnail {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .opc-product-info h5 {
+        font-size: 13px;
+    }
+    .opc-product-info p {
+        font-size: 12px;
+    }
+    
+    .opc-actions {
+        margin-top: 10px;
+        gap: 8px;
+    }
+    .opc-cancel-button {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+    
+    .opc-modal-content {
+        max-width: 400px;
+        padding: 15px;
+    }
+    .opc-modal-content h3 {
+        font-size: 15px;
+    }
+    .opc-modal-footer {
+        margin-top: 10px;
+        gap: 8px;
+    }
+    .opc-confirm-cancel,
+    .opc-cancel-action {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+}

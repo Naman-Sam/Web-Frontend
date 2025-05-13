@@ -1,0 +1,457 @@
+/*=========================Base Layout & Global Styles==========================*/
+/* Main container for orders and messages area */
+.customer-care-content {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 20px;
+  height: calc(100vh - 80px); /* Adjust as needed */
+  background: #f5f5f5;
+}
+
+/* Left panel: List view (Orders/Users) */
+.left-panel {
+  flex: 1;
+  max-height: 900px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  background: #fefefe;
+}
+
+/* Right panel: Detail view / Order messages */
+.right-panel {
+  flex: 1.2;
+  max-height: 900px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  background: #fff;
+}
+
+/* Detail Panel for mobile view */
+.detail-panel {
+  padding: 10px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+/* Error message styling */
+.error-message {
+  color: #d9534f;
+  font-size: 1.2rem;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.more-details-button-super{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  color: #fff;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  background: orange;
+  transition: background 0.2s ease;
+}
+
+.more-details-button-super:hover{
+  background: rgb(130, 86, 3);
+}
+/*=========================Order Details & Items==========================*/
+/* Detail wrapper used in desktop view */
+.order-detail-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Order details container */
+.order-details-container {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 15px;
+  background: #fefefe;
+  margin-bottom: 15px;
+}
+
+/* Order header with close button */
+.order-details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.order-details-header h2 {
+  font-size: 1.2rem;
+  margin: 0;
+}
+.order-details-header .close-button {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  color: #d9534f;
+  cursor: pointer;
+  padding: 5px;
+  transition: color 0.2s;
+}
+.order-details-header .close-button:hover {
+  color: #c9302c;
+}
+
+/* Order content text */
+.order-details-content p {
+  margin: 5px 0;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+/* Order items section */
+.order-items-section {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 15px;
+  background: #fff;
+}
+.order-items-section h3 {
+  margin-top: 0;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+/* Order item styles */
+.order-item {
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+}
+.order-item:last-child {
+  border-bottom: none;
+}
+.order-item p {
+  margin: 2px 0;
+  font-size: 0.9rem;
+}
+
+/* Instead of listing multiple images, show only one thumbnail */
+.item-image {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-right: 5px;
+}
+
+/*=========================SuperOrderCardComponent==========================*/
+/* Base styles for the order card (applies in both collapsed & expanded states) */
+.super-order-card {
+  border-radius: 8px;
+  background: linear-gradient(145deg, #e0e0e0, #ffffff);
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1), -3px -3px 6px rgba(255, 255, 255, 0.7);
+  padding: 15px 18px;
+  margin: 8px 0;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease;
+}
+.super-order-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2), -3px -3px 8px rgba(255, 255, 255, 0.8);
+}
+.super-order-card.active {
+  box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.15), inset -3px -3px 6px rgba(255, 255, 255, 0.9);
+  background: #f7f7f7;
+}
+
+/* Card summary: minimal info always visible */
+.card-summary {
+  display: flex;
+  gap: 20px;
+  font-size: 14px;
+  color: #666;
+  align-items: center;
+}
+
+/* Distinct summary badges for clarity */
+.order-id {
+  font-weight: bold;
+  color: #333;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-right: 5px;
+}
+.user-info {
+  font-weight: bold;
+  font-size: 18px;
+  color: #555;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-right: 5px;
+}
+.order-type {
+  font-weight: bold;
+  background-color: #e3f2fd;
+  color: #0277bd;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-right: 5px;
+}
+.order-type.pickup {
+  background-color: #e8f5e9;
+  color: #388e3c;
+}
+.order-type.delivery {
+  background-color: #e3f2fd;
+  color: #0277bd;
+}
+
+/* Expanded details within the order card */
+.order-card-details {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #eee;
+  font-size: 0.9rem;
+  color: #555;
+}
+.order-card-details p {
+  margin: 5px 0;
+}
+.order-card-details ul {
+  list-style: none;
+  padding-left: 0;
+}
+.order-card-details li {
+  margin: 3px 0;
+}
+
+/*=========================OrderStatus & Update Controls==========================*/
+.order-status-update {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background: #fafafa;
+}
+.order-status-update p {
+  margin: 0 0 10px;
+  font-weight: bold;
+}
+.order-status-update select {
+  padding: 4px 8px;
+  margin-right: 8px;
+}
+.order-status-update button {
+  padding: 4px 12px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.order-status-update button:hover {
+  background-color: #0056b3;
+}
+
+/*=========================Tabs & Filters==========================*/
+.tab-buttons {
+  display: flex;
+  margin-bottom: 10px;
+}
+.tab-buttons button {
+  flex: 1;
+  padding: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  background: #fff;
+  transition: background 0.2s ease;
+}
+.tab-buttons button.active,
+.tab-buttons button:hover {
+  background: #f7f7f7;
+}
+.sort-filter {
+  margin-bottom: 10px;
+}
+
+/* Search & Sort Bar */
+.search-sort-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+  align-items: center;
+}
+.search-sort-bar input[type="text"] {
+  flex: 1;
+  padding: 6px 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+.search-sort-bar button {
+  padding: 6px 12px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+}
+.search-sort-bar button:hover {
+  background-color: #0056b3;
+}
+
+/*=========================Sort Popup Styles==========================*/
+.sort-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.sort-popup {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+.sort-popup h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  color: #333;
+}
+.sort-popup label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+  color: #555;
+}
+.sort-popup input,
+.sort-popup select {
+  width: 100%;
+  padding: 6px 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+.sort-popup-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.sort-popup-actions button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.sort-popup-actions button:first-child {
+  background-color: #007bff;
+  color: #fff;
+}
+.sort-popup-actions button:first-child:hover {
+  background-color: #0056b3;
+}
+.sort-popup-actions button:last-child {
+  background-color: #ddd;
+  color: #333;
+}
+.sort-popup-actions button:last-child:hover {
+  background-color: #ccc;
+}
+
+/*=========================Order Status Color Coding==========================*/
+.order-status {
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 0.85rem;
+}
+.order-status.pending {
+  background-color: #fff8e1;
+  color: #f57f17;
+}
+.order-status.processing {
+  background-color: #e3f2fd;
+  color: #0277bd;
+}
+.order-status.completed {
+  background-color: #e8f5e9;
+  color: #388e3c;
+}
+.order-status.sent {
+  background-color: #f3e5f5;
+  color: #7b22d5;
+}
+.order-status.delivered {
+  background-color: #e8f5e9;
+  color: #388e3c;
+}
+.order-status.cancelled {
+  background-color: #ffebee;
+  color: #d32f2f;
+}
+.order-status.ready-for-pickup {
+  background-color: #f3e5f5;
+  color: #7b1fa2;
+}
+
+/*=========================Responsive Styles==========================*/
+/* Mobile view: 480px and below */
+@media (max-width: 480px) {
+  .customer-care-content {
+    flex-direction: column;
+    padding: 10px;
+    height: auto;
+  }
+  .left-panel,
+  .right-panel {
+    border: none;
+    padding: 0;
+    max-height: none;
+    overflow-y: visible;
+  }
+  .mobile-orders,
+  .mobile-order-details {
+    width: 100%;
+  }
+  .mobile-order-details .back-btn {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+}
+
+/* Tablet view: 481px up to 768px */
+@media (min-width: 481px) and (max-width: 768px) {
+  .customer-care-content {
+    gap: 10px;
+    padding: 15px;
+  }
+  .left-panel,
+  .right-panel {
+    flex: 1;
+    max-height: 900px;
+    overflow-y: auto;
+  }
+}

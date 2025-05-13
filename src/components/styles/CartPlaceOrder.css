@@ -1,0 +1,339 @@
+/* Main Container Styling */
+.cart-place-order {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    width: 100%;
+    font-family: 'Roboto', sans-serif; /* Consistent font */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between sections */
+}
+
+/* Heading Styling */
+.cart-place-order h3 {
+    font-size: 22px;
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 15px;
+}
+.order-type-price-kota {
+    font-size: 18px;
+    font-weight: bold;
+    color: #16bc00;
+    margin-bottom: 10px;
+}
+/* Order Type Buttons Section */
+.order-type-selection {
+    display: flex;
+    justify-content: space-between;
+}
+
+.order-type-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #007bff; /* Primary blue */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.order-type-button:hover {
+    background-color: #0056b3; /* Darker blue */
+    transform: scale(1.05);
+}
+
+.order-type-button.selected {
+    background-color: green; /* Highlight selected option */
+}
+
+.order-type-button:focus {
+    outline: 2px solid #0056b3;
+}
+
+.order-type-delivery-address-kota {
+    font-size: 16px;
+    color: #333;
+    background-color: rgba(0, 123, 255, 0.1); /* Transparent blue background */
+    border: 1px solid #007bff; /* Blue border */
+    border-radius: 4px; /* Optional: adds rounded corners */
+    padding: 10px; /* Optional: adds some space inside the element */
+}
+
+/* Order Summary Section */
+.order-summary-kota {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.order-summary-kota ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.order-item:last-child {
+    border-bottom: none;
+}
+
+.order-type-address-kota {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    background-color: rgba(0, 123, 255, 0.1); /* Transparent blue background */
+    border: 1px solid #007bff; /* Blue border */
+    border-radius: 4px; /* Optional: adds rounded corners */
+    padding: 10px; /* Optional: adds some space inside the element */
+}
+
+.order-summary-kota p {
+    font-size: 16px;
+}
+
+.order-type-note-kota {
+    font-size: 14px;
+    color: #ff0000;
+    margin-top: 10px;
+}
+
+/* Delivery Address Section */
+.delivery-section h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.delivery-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.delivery-section form label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}
+
+.delivery-section form input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Address Buttons */
+.delivery-section form button {
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.delivery-section form button[type='submit'] {
+    background-color: #28a745; /* Green for save */
+}
+
+.delivery-section form button[type='submit']:hover {
+    background-color: #218838;
+}
+
+.delivery-section form button[type='button'] {
+    background-color: #dc3545; /* Red for cancel */
+}
+
+.delivery-section form button[type='button']:hover {
+    background-color: #c82333;
+}
+
+.delivery-section button {
+    padding: 10px 15px;
+    background-color: orange;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.delivery-section button:hover {
+    background-color: darkorange;
+}
+
+/* Add a Note Section */
+.order-note-section h3 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #222;
+}
+
+.order-note {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #333;
+    resize: none; /* Disable resizing */
+}
+
+/* Confirm Order Button */
+.place-order-button {
+    padding: 12px 20px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.place-order-button:hover {
+    background-color: darkgreen;
+    transform: scale(1.05);
+}
+
+.place-order-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .cart-place-order {
+        padding: 15px;
+    }
+
+    .order-type-selection {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .order-type-button {
+        width: 100%;
+    }
+
+    .delivery-section form {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .delivery-section button {
+        width: 100%;
+    }
+
+    .place-order-button {
+        width: 100%;
+    }
+}
+.order-success-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* semi-transparent background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000; /* ensure it appears on top */
+  }
+  
+  .order-success-container {
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  .order-success-close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  .order-success-close-button:hover {
+   color: darkorange;
+  }
+  .order-success-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .order-success-message {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: #666;
+  }
+  
+  .popup-buttons-container {
+    display: flex; /* Aligns buttons horizontally */
+    gap: 15px; /* Adds uniform spacing between buttons */
+    justify-content: center; /* Centers buttons horizontally within the popup */
+    margin-top: 20px; /* Adds spacing above the buttons */
+  }
+  
+  .go-to-orders-button {
+    background-color: orange;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .go-to-orders-button:hover {
+    background-color: darkorange;
+  }
+  
+  .get-directions-button-seen {
+    background-color: darkred;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .get-directions-button-seen:hover {
+    background-color: darkblue;
+  }
+  

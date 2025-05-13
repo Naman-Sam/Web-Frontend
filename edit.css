@@ -1,0 +1,53 @@
+.poster-gage-connect-product {
+  padding: 8px 12px;
+  background-color: orange;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  /* Smooth hover effects */
+}
+
+.poster-gage-connect-product:hover {
+  background-color: darkorange;
+  transform: scale(1.1);
+  /* Slight enlargement on hover */
+}
+
+.edit-save-combo-tombo {
+  padding: 8px 12px;
+  background-color: rgb(75, 154, 0);
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  /* Smooth hover effects */
+}
+
+.edit-save-combo-tombo:hover {
+  background-color: rgb(2, 106, 21);
+  transform: scale(1.1);
+  /* Slight enlargement on hover */
+}
+
+.edit-cancel-combo-tombo {
+  padding: 8px 12px;
+  background-color: rgb(205, 0, 0);
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  /* Smooth hover effects */
+}
+
+.edit-cancel-combo-tombo:hover {
+  background-color: rgb(0, 0, 0);
+  transform: scale(1.1);
+  /* Slight enlargement on hover */
+}

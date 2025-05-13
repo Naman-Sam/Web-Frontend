@@ -1,0 +1,106 @@
+/* Tablet */
+@media (max-width: 768px) {
+    .discover-section {
+        padding: 10px; /* Compact padding */
+        max-width: 100%; /* Fit screen width */
+      }
+    
+      .discover-row {
+        gap: 5px; /* Reduce spacing */
+        padding: 5px 0; /* Smaller padding */
+        max-width: 100%; /* Constrain row width */
+      }
+  
+    .section-title-discover {
+      font-size:24px; /* Reduce font size */
+      color: rgb(0, 0, 0);
+      gap: 5px; /* Minimize spacing between elements */
+    }
+  
+    .section-title-discover i {
+      font-size: 16px; /* Adjust icon size */
+    }
+  
+    .digged-container {
+      padding: 8px; /* Reduced padding */
+      max-width: 100%; /* Ensure it fits screen */
+      height: auto; /* Adjust height dynamically */
+    }
+  
+    .categories-container {
+      overflow-x: auto;
+    }
+  
+    .categories {
+      gap: 5px; /* Minimize spacing */
+    }
+  
+    .category-item {
+      min-width: 60px; /* Compact width */
+      padding: 4px 8px;
+      font-size: 14px; /* Smaller text size */
+      border-radius: 4px; /* Sharper corners */
+    }
+  
+    .scroll-arrow {
+      width: 14px; /* Narrower width */
+      height: 20px; /* Shorter height */
+      font-size: 10px; /* Smaller font size */
+    }
+  }
+  
+  /* Mobile */
+  @media (max-width: 480px) {
+    .discover-section {
+        padding: 5px !important; /* Minimal padding */
+        max-width: 100% !important; /* Fit screen width */
+      }
+    
+      .discover-row {
+        gap: 4px !important; /* Further minimized gap */
+        padding: 4px 0 !important; /* Compact vertical spacing */
+        max-width: 100% !important; /* Constrain row width */
+      }
+    
+      /* Hide the "Discover" text and show only the icon */
+      .section-title-discover {
+        font-size: 0 !important; /* Hide the text by zeroing the font size */
+        gap: 0 !important; /* Remove gap */
+      }
+    
+      .section-title-discover i {
+        font-size: 24px !important;  /* Make the icon visible and larger */
+        line-height: normal !important;
+      }
+      
+    
+      .digged-container {
+        padding: 4px !important; /* Minimal padding */
+        width: 100% !important; /* Expand to full width */
+        max-width: 100% !important; /* Responsive width */
+        margin: 0 !important; /* Remove horizontal margins */
+        height: auto !important; /* Auto-adjust height */
+      }
+    
+      .categories-container {
+        overflow-x: auto !important;
+      }
+    
+      .categories {
+        gap: 5px !important; /* Tight spacing */
+      }
+    
+      .category-item {
+        min-width: 50px !important; /* Smallest item width */
+        padding: 3px 6px !important; /* Minimal padding */
+        font-size: 10px !important; /* Tiny text size */
+        border-radius: 3px !important; /* Compact corners */
+      }
+    
+      .scroll-arrow {
+        width: 12px !important; /* Very narrow width */
+        height: 18px !important; /* Compact height */
+        font-size: 8px !important; /* Smallest font size */
+      }
+    }
+    

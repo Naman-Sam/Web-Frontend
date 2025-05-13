@@ -1,0 +1,64 @@
+
+  
+  /* Responsive Design for Mobile (max-width: 480px) */
+  @media (max-width: 480px) {
+  
+    .login-form {
+      width: 360px;
+    }
+  
+    .signup-form {
+        width: 360px;
+        margin: 0 auto; /* centers the element horizontally */
+      }      
+      
+  
+    .login-signup-title {
+      font-size: 1.6rem; /* Smaller title for mobile */
+    }
+  
+    .login-signup-input {
+      font-size: 0.85rem; /* Adjust font size for inputs */
+      padding: 0.6rem;
+    }
+  
+    .login-signup-button {
+      font-size: 0.85rem; /* Adjust button text size */
+      padding: 0.7rem 1rem;
+    }
+  
+    .login-signup-helper-links {
+      font-size: 0.8rem;
+    }
+  }
+  @media (max-width: 480px) {
+    .username-check-container {
+      gap: 0.5rem;          /* Reduce spacing between elements */
+      margin-bottom: 1rem;  /* Adjust spacing for compact layout */
+    }
+  
+    .username-input-group {
+      width: 100%;          /* Ensure full width for small screens */
+    }
+  
+    .username-check-input {
+      font-size: 0.9rem;    /* Reduce font size for inputs */
+      padding: 0.7rem;      /* Compact padding */
+      padding-right: 5rem;  /* Adjust space for button */
+    }
+  
+    .username-check-button {
+      font-size: 0.7rem;    /* Adjust button text size */
+      padding: 0.6rem 0.8rem; /* Compact padding */
+      top: 50%;             /* Ensure vertical alignment */
+      transform: translateY(-50%); /* Center button relative to input */
+    }
+  
+    .success-message,
+    .error-message-again {
+      font-size: 0.85rem;   /* Reduce font size for messages */
+      text-align: left;     /* Ensure readability */
+      margin: 0.5rem 0;     /* Add compact vertical spacing */
+    }
+  }
+  

@@ -1,0 +1,315 @@
+/* SuperTypeAndOption.css - Updated with "to-" Prefix */
+
+:root {
+    --to-primary: #FFA500;
+    --to-primary-dark: #cc8400;
+    --to-secondary: #000;
+    --to-light: #f9f9f9;
+    --to-border: #ddd;
+    --to-font: 'Roboto', sans-serif;
+  }
+  
+  .to-section {
+    background: var(--to-light);
+    padding: 20px;
+    border: 1px solid var(--to-border);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-family: var(--to-font);
+  }
+  
+  .to-section h2 {
+    color: var(--to-primary);
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  
+  /* Display Mode */
+  .to-display {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .to-group {
+    margin-bottom: 10px;
+  }
+  
+  .to-chip {
+    background-color: var(--to-primary);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 15px;
+    margin-right: 5px;
+    display: inline-block;
+    text-align: center;
+    white-space: normal;   /* Allow wrapping */
+    overflow: visible;      /* Show overflow */
+    text-overflow: unset;   /* Remove ellipsis */
+  }
+  
+  /* Edit Mode – Types List */
+  .to-edit .to-types-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .to-type-chip {
+    background-color: var(--to-primary);
+    color: #fff;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    position: relative;
+    white-space: normal;   /* Allow wrapping */
+    overflow: visible;      /* Show overflow */
+    text-overflow: unset;   /* Remove ellipsis */
+  }
+  
+  .to-type-chip.selected {
+    background-color: var(--to-secondary);
+  }
+  
+  .to-type-chip:hover {
+    opacity: 0.9;
+  }
+  
+  /* Inline Edit Button on Chip */
+  .to-chip-edit-btn {
+    margin-left: 8px;
+    font-size: 12px;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 2px 4px;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  /* Add Type Section */
+  .to-add-type {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+  }
+  
+  .to-add-type input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid var(--to-border);
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .to-add-type button {
+    background-color: var(--to-primary);
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .to-add-type button:hover {
+    background-color: var(--to-primary-dark);
+  }
+  
+  /* Modal for Option Selection */
+  .to-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .to-modal-content {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+  }
+  
+  .to-modal-content h3 {
+    color: var(--to-primary);
+    margin-top: 0;
+  }
+  
+  /* Options list inside the modal */
+  .to-modal-options-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 15px 0;
+  }
+  
+  .to-modal-option-chip {
+    background-color: var(--to-primary);
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    white-space: normal;   /* Allow wrapping */
+    overflow: visible;      /* Show overflow */
+    text-overflow: unset;   /* Remove ellipsis */
+  }
+  
+  .to-modal-option-chip.selected {
+    background-color: var(--to-secondary);
+  }
+  
+  .to-modal-option-chip:hover {
+    opacity: 0.9;
+  }
+  
+  /* Modal Add Option Form */
+  .to-modal-add-option {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .to-modal-add-option input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid var(--to-border);
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .to-modal-add-option button {
+    background-color: var(--to-primary);
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .to-modal-add-option button:hover {
+    background-color: var(--to-primary-dark);
+  }
+  
+  /* Modal Actions */
+  .to-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+  }
+  
+  .to-modal-actions button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .to-modal-actions button:first-child {
+    background-color: var(--to-primary);
+    color: #fff;
+  }
+  
+  .to-modal-actions button:first-child:hover {
+    background-color: var(--to-primary-dark);
+  }
+  
+  .to-modal-actions button:last-child {
+    background-color: #ccc;
+    color: #333;
+  }
+  
+  .to-modal-actions button:last-child:hover {
+    background-color: #999;
+  }
+  
+  /* Context Menus */
+  .to-context-menu {
+    background: #fff;
+    border: 1px solid var(--to-border);
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    padding: 5px;
+    position: absolute;
+    z-index: 2000;
+  }
+  
+  .to-context-menu button {
+    background: none;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+  }
+  
+  .to-context-menu button:hover {
+    background: var(--to-primary-dark);
+    color: #fff;
+  }
+  .more-type-user-one {
+    padding: 8px 12px;
+    background-color: orange;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    /* Smooth hover effects */
+  }
+  
+  .more-type-user-one:hover {
+    background-color: darkorange;
+    transform: scale(1.1);
+    /* Slight enlargement on hover */
+  }
+  
+  .more-type-user-one-save {
+    padding: 8px 12px;
+    background-color: rgb(75, 154, 0);
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    /* Smooth hover effects */
+  }
+  
+  .more-type-user-one-save:hover {
+    background-color: rgb(2, 106, 21);
+    transform: scale(1.1);
+    /* Slight enlargement on hover */
+  }
+  
+  .more-type-user-one-cancel {
+    padding: 8px 12px;
+    background-color: rgb(205, 0, 0);
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    /* Smooth hover effects */
+  }
+  
+  .more-type-user-one-cancel:hover {
+    background-color: rgb(0, 0, 0);
+    transform: scale(1.1);
+    /* Slight enlargement on hover */
+  }

@@ -1,0 +1,227 @@
+/* ProductEditPage.css */
+
+:root {
+    --primary-color: #FFA500; /* Vibrant Orange */
+    --primary-dark: #cc8400;
+    --secondary-color: #000000; /* Black */
+    --light-grey: #f9f9f9;
+    --border-grey: #ddd;
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    --font-family: 'Roboto', sans-serif;
+  }
+  
+  /* Overall Page Container */
+  .product-edit-page {
+    background-color: #f3f3f3;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+  }
+  
+  .redirect-note-for-me{
+    color: #ff0000;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+
+  .redirect-note-for-me-click{
+    color: #0066ff;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+
+  .redirect-note-for-me-click:hover{
+    color: #2205ff;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+
+  .edit-images-edit-product {
+    padding: 8px 12px;
+    background-color: orange;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth hover effects */
+  }
+  
+  .edit-images-edit-product:hover {
+    background-color: darkorange;
+    transform: scale(1.1); /* Slight enlargement on hover */
+  }
+
+  .How-To-Edit{
+    padding: 8px 12px;
+    background-color: orange;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth hover effects */
+  }
+
+  .How-To-Edit:hover {
+    background-color: darkorange;
+    transform: scale(1.1); /* Slight enlargement on hover */
+  } 
+
+  .loading-product-edit-charge{
+    display: flex; /* Flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Full viewport height */
+    font-size: 1.5rem; /* Larger font size for loading text */
+    color: #555; /* Neutral color for loading text */
+}
+
+  .edit-images-edit-save-product {
+    padding: 8px 12px;
+    background-color: rgb(75, 154, 0);
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth hover effects */
+  }
+  
+  .edit-images-edit-save-product:hover {
+    background-color: rgb(2, 106, 21);
+    transform: scale(1.1); /* Slight enlargement on hover */
+  }
+
+  .edit-images-edit-cancel-product {
+    padding: 8px 12px;
+    background-color: rgb(205, 0, 0);
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth hover effects */
+  }
+  
+  .edit-images-edit-cancel-product:hover {
+    background-color: rgb(0, 0, 0);
+    transform: scale(1.1); /* Slight enlargement on hover */
+  }
+
+  /* Section Containers */
+  .product-edit-page section {
+    background: #fff;
+    padding: 30px;
+    border: 1px solid var(--border-grey);
+    border-radius: 10px;
+    width: 100%;
+    max-width: 800px;
+    box-shadow: 0px 4px 12px var(--shadow-light);
+  }
+  
+  /* Headings */
+  .product-edit-page h1 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+  }
+  
+  .product-edit-page h2 {
+    color: var(--primary-dark);
+    margin-bottom: 15px;
+    text-transform: uppercase;
+  }
+  
+  /* Basic Details Section */
+  .basic-details-section .display-form p,
+  .basic-details-section .edit-form input,
+  .basic-details-section .edit-form textarea {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .basic-details-section .edit-form input,
+  .basic-details-section .edit-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-grey);
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  
+  .basic-details-section .display-form input:focus,
+  .basic-details-section .edit-form textarea:focus {
+    border-color: var(--primary-color);
+  }
+  
+  .basic-details-section button {
+    padding: 12px 25px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: var(--primary-color);
+    color: #fff;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+  }
+  
+  .basic-details-section button:hover {
+    background-color: var(--primary-dark);
+  }
+  
+  /* Images Section */
+  .images-section .images-display img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border: 1px solid var(--border-grey);
+    border-radius: 5px;
+    margin: 5px;
+  }
+  
+  .images-section .images-edit input[type="file"] {
+    margin-bottom: 15px;
+  }
+  
+  .images-section .images-edit .image-previews {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+  }
+  
+  .images-section .images-edit .image-preview {
+    position: relative;
+  }
+  
+  .images-section .images-edit .image-preview img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border: 1px solid var(--border-grey);
+    border-radius: 5px;
+  }
+  
+  .images-section .images-edit .image-preview button {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    background-color: var(--primary-color);
+    border: none;
+    color: #fff;
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 12px;
+    cursor: pointer;
+    margin-right: 5px;
+  }
+  
+  /* Modal Overlay (for cropping, etc.) */
+  .modal-overlay {
+    z-index: 1000;
+  }
+  

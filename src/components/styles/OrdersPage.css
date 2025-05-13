@@ -1,0 +1,64 @@
+.orders-layout {
+    display: flex;
+    gap: 20px; /* Space between sections */
+    margin-top: 20px;
+    flex-wrap: wrap; /* Enable wrapping for smaller screens */
+}
+
+.left-section-inforce,
+.middle-section-inforce,
+.right-section-inforce {
+    flex: 1; /* Equal width for each section */
+    background-color: #fff; /* White background for each section */
+    padding: 20px; /* Add spacing inside sections */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    min-width: 300px; /* Ensure sections don't shrink too small */
+    max-height: 85vh; /* Limit height */
+    overflow-y: auto; /* Enable scrolling for long content */
+}
+
+.left-section-inforce h2,
+.middle-section-inforce h2,
+.right-section-inforce h2 {
+    font-size: 1.5rem;
+    color: #ff6f00; /* Vibrant orange for titles */
+    margin-bottom: 10px;
+    border-bottom: 2px solid #ddd; /* Add a bottom border for section headings */
+    padding-bottom: 8px; /* Add spacing beneath the title */
+}
+
+.middle-section-inforce,
+.right-section-inforce {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column; /* Stack content vertically */
+}
+
+.middle-section-inforce p1,
+.right-section-inforce p1 {
+    font-size: 14px;
+    color: #555;
+    margin: 0;
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+    .orders-layout {
+        flex-direction: column; /* Stack sections vertically on smaller screens */
+    }
+
+    .left-section-inforce,
+    .middle-section-inforce,
+    .right-section-inforce {
+        margin-bottom: 20px; /* Add spacing between stacked sections */
+        max-height: unset; /* Remove height restriction for mobile */
+    }
+
+    .middle-section-inforce,
+    .right-section-inforce {
+        text-align: left; /* Align text to left on smaller screens for readability */
+    }
+}

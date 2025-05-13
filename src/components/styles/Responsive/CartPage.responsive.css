@@ -1,0 +1,111 @@
+
+  /* For devices up to 768px (Tablets and Small Devices) */
+  @media (max-width: 768px) {
+    .cart-layout {
+      flex-direction: column; /* Stack containers vertically */
+      gap: 15px;
+    }
+    
+    .cart-products-section,
+    .order-summary-section {
+      width: 100%;
+    }
+    
+    /* Left Section adjustments */
+    .cart-products-section {
+      padding: 15px;
+      max-height: calc(200vh - 40px); /* Remove height constraint to let content expand */
+    }
+    
+    /* Order Summary adjustments */
+    .order-summary-section {
+      padding: 15px;
+      position: relative; /* Remove sticky position on small screens */
+      top: 0;
+      gap: 15px;
+    }
+    
+    .cart-header-title {
+      font-size: 36px; /* Reduced from 44px */
+    }
+    
+    .cart-products-section h1 {
+      font-size: 22px;
+    }
+    
+    .order-summary-section h2 {
+      font-size: 20px;
+    }
+    
+    .order-total h3 {
+      font-size: 18px;
+    }
+    
+    .place-order-button,
+    .place-order-main-button {
+      font-size: 14px;
+      padding: 10px 15px;
+    }
+    
+    .order-item {
+      font-size: 14px;
+      padding: 8px 0;
+    }
+  }
+  
+  /* For devices up to 480px (Small Mobile Devices) */
+  @media (max-width: 480px) {
+    .cart-layout {
+      gap: 10px;
+    }
+    
+    .cart-products-section {
+      padding: 10px;
+      max-height: calc(100vh - 40px);
+    }
+    
+    .order-summary-section {
+      padding: 10px;
+      gap: 10px;
+    }
+    
+    .cart-header-title {
+      font-size: 32px;
+    }
+    
+    .cart-products-section h1 {
+      font-size: 20px;
+    }
+    
+    .loading-message {
+      font-size: 14px;
+    }
+    
+    .empty-cart-message {
+      font-size: 16px;
+    }
+    
+    .browse-products-button {
+      padding: 8px 16px;
+      font-size: 14px;
+    }
+    
+    .cart-item-card {
+      padding: 10px;
+    }
+    
+    .order-summary-section h2 {
+      font-size: 18px;
+    }
+    
+    .order-total h3 {
+      font-size: 16px;
+    }
+    
+    .place-order-button,
+    .place-order-main-button {
+      font-size: 14px;
+      padding: 10px 15px;
+    }
+  }
+  

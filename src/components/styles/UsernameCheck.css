@@ -1,0 +1,78 @@
+/* Username Check Container */
+.username-check-container {
+    margin-bottom: 1.5rem; /* Add spacing below for other elements */
+    display: flex;
+    flex-direction: column; /* Stack child elements vertically */
+    gap: 0.8rem; /* Space between input, button, and messages */
+}
+
+/* Username Input Group */
+.username-input-group {
+    position: relative; /* Enable relative positioning for input and button */
+    width: 100%; /* Ensure the container takes full width */
+}
+
+/* Username Input Styling */
+.username-check-input {
+    width: 100%; /* Full width of the container */
+    padding-right: 6rem; /* Space for the button on the right */
+    padding: 0.8rem; /* Inner padding for text */
+    border: 1px solid #ddd; /* Neutral border for clean styling */
+    border-radius: 8px; /* Rounded corners for visual appeal */
+    font-size: 1rem; /* Text size for readability */
+    background: #f9f9f9; /* Subtle gray background */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth effects */
+}
+
+/* Focus Effect on Username Input */
+.username-check-input:focus {
+    border-color: #007bff; /* Blue border for focus state */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Subtle glow effect */
+    outline: none; /* Remove default focus outline */
+}
+
+/* Check Availability Button Styling */
+.username-check-button {
+    position: absolute; /* Position relative to the input field */
+    top: 50%; /* Center vertically relative to input */
+    right: 10px; /* Align button close to the input's right edge */
+    transform: translateY(-50%); /* Adjust for perfect vertical alignment */
+    padding: 0.5rem 1rem; /* Inner padding for button text */
+    background: #ff6f00; /* Blue background for button */
+    border: none; /* Remove default border */
+    border-radius: 8px; /* Rounded corners for consistency */
+    color: white; /* White text for contrast */
+    font-size: 1rem; /* Text size for readability */
+    font-weight: bold; /* Emphasize button text */
+    cursor: pointer; /* Pointer cursor for interactivity */
+    transition: background 0.3s ease, transform 0.3s ease; /* Smooth hover effects */
+}
+
+/* Hover Effect for Button */
+.username-check-button:hover {
+    background: darkorange; /* Darker blue for hover state */
+    transform: translateY(-55%); /* Slight lift effect on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for interactivity */
+}
+
+/* Disabled State for Button */
+.username-check-button:disabled {
+    background: #d6d6d6; /* Gray background for disabled button */
+    cursor: not-allowed; /* Indicate button unavailability */
+}
+
+/* Success Message */
+.success-message {
+    color: green; /* Bright green for success feedback */
+    font-size: 1rem; /* Font size for message readability */
+    margin: 0; /* Remove margin for alignment */
+    text-align: left; /* Align text to left */
+}
+
+/* Error Message */
+.error-message-again {
+    color: red; /* Bright red for error feedback */
+    font-size: 1rem; /* Font size for message readability */
+    margin: 0; /* Remove margin for alignment */
+    text-align: left; /* Align text to left */
+}

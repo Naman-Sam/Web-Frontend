@@ -1,0 +1,76 @@
+/* Mobile Styles (max-width: 480px) */
+@media only screen and (max-width: 480px) {
+    .mobile-orders-layout {
+      padding: 10px;
+    }
+    .mobile-order-item {
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 10px;
+      background: #fff;
+    }
+    .mobile-order-expanded {
+      margin-top: 10px;
+      padding: 10px;
+      background: #f9f9f9;
+      border-top: 1px solid #ccc;
+    }
+    .mobile-collapse-button {
+      display: block;
+      margin: 10px auto 0;
+      background-color: #007bff;
+      color: #fff;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  }
+  
+  /* Tablet Styles (min-width: 481px and max-width: 768px) */
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+    .tablet-orders-layout {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        padding: 10px;
+    }
+    .tablet-left-column {
+        flex: 1.2; /* Slightly larger proportion to give more space to the orders list */
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .tablet-orders-list {
+        flex: 0.4; /* Decrease the flex value to reduce the allocated space */
+        max-height: 800px; /* Limit the maximum height explicitly */
+        overflow-y: auto;
+        margin-bottom: 5px; /* Reduce bottom margin */
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 8px; /* Decrease padding for a more compact look */
+        background: #fff;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow for less visual weight */
+    }    
+    .tablet-order-summary {
+        flex: 0.4; /* Maintain a balanced height */
+        max-height: 400px; /* Limit the maximum height explicitly */
+        overflow-y: fixed;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 10px;
+        background: #f9f9f9;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .tablet-right-column {
+        flex: 1; /* Allow the messages column to occupy a larger proportion */
+        max-height: 800px; /* Limit the maximum height explicitly */
+        overflow-y: auto;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 10px;
+        background: #fff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+}

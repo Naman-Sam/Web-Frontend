@@ -1,0 +1,18 @@
+/* Newest Grid */
+.newest-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
+    grid-auto-rows: auto; /* Dynamic row height based on content */
+    gap: 20px; /* Space between grid items */
+    margin: 20px auto; /* Center the grid */
+    max-width: 1200px; /* Restrict grid width */
+  }
+  
+  
+  /* No Products Message */
+  .no-products-message {
+    font-size: 18px;
+    text-align: center;
+    color: #a0a0a0; /* Neutral grey for emphasis */
+    margin-top: 20px;
+  }

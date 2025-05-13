@@ -1,0 +1,61 @@
+
+  
+  
+  /* ------------------------------------
+     Responsive Adjustments 
+  ---------------------------------------*/
+  
+  /* iPad Pro Adjustments (min-width: 769px and max-width: 1024px) */
+  @media only screen and (min-width: 769px) and (max-width: 1024px) {
+    .cart-container {
+      width: 50%;       /* Increase width for easier interaction */
+      right: -50%;      /* Adjust hidden position to match new width */
+      padding: 20px;    /* Maintain comfortable padding */
+    }
+    
+    .close-button {
+      font-size: 22px;  /* Moderately sized close icon */
+    }
+    
+    .cart-header {
+      font-size: 20px;  /* Slightly reduced header font size for iPad Pro */
+      margin: 18px 0;
+    }
+    
+    .go-to-cart-button {
+      font-size: 16px;  /* Maintain button legibility */
+      padding: 12px 20px;
+    }
+  }
+  
+  /* Mobile Phone Adjustments (max-width: 768px) */
+  @media (max-width: 768px) {
+    .cart-container {
+      width: 80%; /* Full width on smaller screens */
+    }
+    
+    .cart-header {
+      font-size: 18px; /* Adjust header size for small screens */
+    }
+    
+    .go-to-cart-button {
+      font-size: 14px;
+      padding: 10px 15px; /* Smaller button size */
+    }
+  }
+
+   /* Mobile Phone Adjustments (max-width: 768px) */
+   @media (max-width: 480px) {
+    .cart-container {
+      width: 90%; /* Full width on smaller screens */
+    }
+    
+    .cart-header {
+      font-size: 18px; /* Adjust header size for small screens */
+    }
+    
+    .go-to-cart-button {
+      font-size: 14px;
+      padding: 10px 15px; /* Smaller button size */
+    }
+  }

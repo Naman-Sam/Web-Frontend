@@ -1,0 +1,16 @@
+  /* Tablet Screens (max-width: 768px)
+   → Make it 3 columns (3×4 grid if you have 12 items) */
+   @media (max-width: 768px) {
+    .newest-grid {
+      grid-template-columns: repeat(3, 1fr); /* 3 columns for tablet */
+    }
+  }
+  
+  /* Mobile Screens (max-width: 480px)
+     → Make it 2 columns (2×6 grid if you have 12 items) */
+  @media (max-width: 480px) {
+    .newest-grid {
+      grid-template-columns: repeat(2, 1fr); /* 2 columns for mobile */
+    }
+    
+  }

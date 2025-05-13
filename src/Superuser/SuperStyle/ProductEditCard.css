@@ -1,0 +1,270 @@
+/* ProductEdit.css */
+
+/* Global Variables */
+:root {
+    --primary-color: #FFA500;   /* Vibrant Orange */
+    --primary-dark: #cc8400;
+    --secondary-color: #000000; /* Black */
+    --light-grey: #f9f9f9;
+    --border-grey: #ddd;
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    --font-family: 'Roboto', sans-serif;
+  }
+  
+  /* Global Styles */
+  body {
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+    background-color: #f3f3f3;
+  }
+  
+  
+  /* Main Product Edit Form */
+  .product-edit-form {
+    background: #fff;
+    padding: 30px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    box-shadow: 0px 4px 12px var(--shadow-light);
+    border-radius: 10px;
+  }
+  
+  /* Form Section Styling */
+  .form-section {
+    background: var(--light-grey);
+    padding: 20px;
+    border: 1px solid var(--border-grey);
+    border-radius: 10px;
+    position: relative;
+  }
+  
+  /* Headings */
+  .product-edit-form h1,
+  .product-edit-form h2 {
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+  }
+  
+  /* Form Inputs (and textareas, selects) */
+  .product-edit-form input,
+  .product-edit-form textarea,
+  .product-edit-form select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid var(--border-grey);
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  .product-edit-form input:focus,
+  .product-edit-form textarea:focus,
+  .product-edit-form select:focus {
+    border-color: var(--primary-color);
+  }
+  
+  /* ------------------- Image Sections ------------------- */
+  
+  /* Existing Images Container */
+  .existing-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+  }
+  .existing-image-container {
+    position: relative;
+    display: inline-block;
+  }
+  .existing-images img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border: 2px solid var(--border-grey);
+    border-radius: 5px;
+  }
+  
+  /* Remove Button for Existing Images */
+  .remove-image-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 22px;
+    height: 22px;
+    background-color: rgba(255, 0, 0, 0.8);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  .existing-image-container:hover .remove-image-button {
+    display: flex;
+  }
+  
+  /* New Image Upload Previews */
+  .image-previews {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+  }
+  .new-image-container {
+    position: relative;
+    display: inline-block;
+  }
+  .image-previews img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border: 2px solid var(--border-grey);
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+  .image-previews img:hover {
+    transform: scale(1.05);
+  }
+  .new-image-container:hover .remove-image-button {
+    display: flex;
+  }
+  
+  /* ------------------- Categories Section ------------------- */
+  .categories-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .category-chip {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .category-chip.selected {
+    background-color: var(--secondary-color);
+  }
+  .category-chip .remove-chip {
+    margin-left: 8px;
+    font-weight: bold;
+  }
+  
+  /* Add Category Form */
+  .add-category {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+  }
+  .add-category input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid var(--border-grey);
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  .add-category button {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .add-category button:hover {
+    background-color: var(--primary-dark);
+  }
+  
+  /* ------------------- Types & Options Section ------------------- */
+  .types-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .type-button {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .type-button.selected {
+    background-color: var(--secondary-color);
+  }
+  .type-button:hover {
+    opacity: 0.9;
+  }
+  
+  /* Add Type Form */
+  .add-type {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+  }
+  .add-type input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid var(--border-grey);
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  .add-type button {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .add-type button:hover {
+    background-color: var(--primary-dark);
+  }
+  
+  /* ------------------- Type Combos Section (Table Layout) ------------------- */
+  .combo-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+  }
+  .combo-table th,
+  .combo-table td {
+    border: 1px solid var(--border-grey);
+    padding: 10px;
+    text-align: left;
+  }
+  .combo-table th {
+    background: var(--light-grey);
+    font-size: 16px;
+    color: var(--secondary-color);
+  }
+  .combo-table td input {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid var(--border-grey);
+    border-radius: 5px;
+  }
+  
+  /* ------------------- Submit Button ------------------- */
+  .product-edit-form button[type="submit"] {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  .product-edit-form button[type="submit"]:hover {
+    background-color: var(--primary-dark);
+  }
+  

@@ -1,0 +1,221 @@
+@media (max-width: 480px) {
+    /* General Body Font Size */
+    body {
+      font-size: 14px;
+    }
+    
+    /* Reviews Section */
+    .reviews-section {
+      margin: 15px 5px;
+      padding: 10px;
+    }
+    .reviews-section h2 {
+      font-size: 18px;
+    }
+    
+    /* Add Review Container */
+    .add-review-container {
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    .add-review-container h3 {
+      font-size: 15px;
+    }
+    .add-review-container textarea,
+    .add-review-container select {
+      width: 100%;
+      padding: 8px;
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+    .add-review-container button {
+      padding: 6px 10px;
+      font-size: 12px;
+    }
+    
+    /* Review Card */
+    .review-card {
+      padding: 15px 12px;
+      margin-bottom: 10px;
+    }
+    
+    /* Review Header */
+    .review-header {
+      font-size: 13px;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .review-header.review-username,
+    .review-header.review-stars {
+      font-size: 13px;
+    }
+    .review-header.review-timestamp {
+      font-size: 10px;
+    }
+    
+    /* Reply Adjustments */
+    .reply {
+      padding: 8px;
+      margin: 8px 4px 12px;
+    }
+    .reply-header {
+      font-size: 11px;
+    }
+    .reply-timestamp {
+      font-size: 11px;
+    }
+    
+    /* Menu Options in Reviews */
+    .menu-options button {
+      padding: 5px 8px;
+      font-size: 12px;
+    }
+    
+    /* Add Reply Controls */
+    .add-reply-textarea {
+      width: 100%;
+      padding: 8px;
+      font-size: 12px;
+    }
+    .add-reply-button {
+      padding: 6px 10px;
+      font-size: 12px;
+    }
+    
+    /* Filter Section */
+    .filter-section {
+      padding: 8px;
+      gap: 6px;
+    }
+    .filter-section label,
+    .filter-section select,
+    .clear-filter {
+      font-size: 12px;
+    }
+    .filter-section select {
+      padding: 6px 8px;
+    }
+    .clear-filter {
+      padding: 6px 8px;
+    }
+    
+    /* Three-Dots Menu and Toggle Replies */
+    .three-dots-menu,
+    .three-dots-menu-review {
+      font-size: 14px;
+      padding: 3px;
+    }
+    .toggle-replies {
+      padding: 4px 8px;
+      font-size: 12px;
+    }
+  }
+  @media (max-width: 768px) {
+    /* Reviews Section Adjustments */
+    .reviews-section {
+      margin: 15px 10px;
+      padding: 15px;
+    }
+    .reviews-section h2 {
+      font-size: 20px;
+    }
+    
+    /* Add Review Container */
+    .add-review-container {
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+    .add-review-container h3 {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    .add-review-container textarea,
+    .add-review-container select {
+      width: 100%;
+      padding: 10px;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+    .add-review-container button {
+      padding: 8px 12px;
+      font-size: 13px;
+    }
+    
+    /* Review Card */
+    .review-card {
+      padding: 12px 15px;
+      margin-bottom: 12px;
+    }
+    
+    /* Review Header */
+    .review-header {
+      font-size: 14px;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .review-header.review-username,
+    .review-header.review-stars {
+      font-size: 14px;
+    }
+    .review-header.review-timestamp {
+      font-size: 12px;
+    }
+    
+    /* Replies */
+    .reply {
+      padding: 10px;
+      margin: 10px 5px 15px;
+    }
+    .reply-header {
+      font-size: 12px;
+    }
+    .reply-timestamp {
+      font-size: 12px;
+    }
+    
+    /* Menu Options in Reviews */
+    .menu-options button {
+      padding: 6px 10px;
+      font-size: 13px;
+    }
+    
+    /* Add Reply Controls */
+    .add-reply-textarea {
+      width: 100%;
+      padding: 10px;
+      font-size: 13px;
+    }
+    .add-reply-button {
+      padding: 8px 12px;
+      font-size: 13px;
+    }
+    
+    /* Filter Section */
+    .filter-section {
+      padding: 10px;
+      gap: 8px;
+    }
+    .filter-section label,
+    .filter-section select,
+    .clear-filter {
+      font-size: 13px;
+    }
+    .filter-section select {
+      padding: 8px 10px;
+    }
+    .clear-filter {
+      padding: 8px 10px;
+    }
+    
+    /* Three-Dots & Toggle Replies */
+    .three-dots-menu,
+    .three-dots-menu-review {
+      font-size: 16px;
+      padding: 4px;
+    }
+    .toggle-replies {
+      padding: 6px 12px;
+      font-size: 14px;
+    }
+  }
+    

@@ -1,0 +1,139 @@
+/* Cart Product Card Styling */
+.cart-product-card-cart {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    gap: 15px; /* Space between image and details */
+    width: 100%;
+    max-width: 600px; /* Limit card width */
+    margin: 0 auto; /* Center-align the card */
+}
+
+/* Product Image Styling */
+.product-image-cart {
+    width: 80px;
+    height: 80px;
+    object-fit: cover; /* Ensure image doesn’t distort */
+    border-radius: 8px; /* Rounded edges */
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Product Details Styling */
+.product-details-cart {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.product-details-cart h3 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+}
+
+.product-details-cart p {
+    font-size: 14px;
+    color: #555;
+    margin: 0;
+}
+
+.quantity-control-cart {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.quantity-control-cart label {
+    font-size: 14px;
+    color: #333;
+    font-weight: bold;
+}
+
+.quantity-control-cart input {
+    width: 50px;
+    padding: 5px;
+    font-size: 14px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Buttons Styling */
+.quantity-control-cart button {
+    padding: 8px 12px;
+    background-color: blue;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.quantity-control-cart button:hover {
+    background-color: darkblue;
+    transform: scale(1.05); /* Button hover effect */
+}
+
+.quantity-control-cart button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed; /* Indicate disabled state */
+}
+
+/* Remove Button Styling */
+.product-details-cart button {
+    padding: 8px 12px;
+    background-color: red;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.product-details-cart button:hover {
+    background-color: darkred;
+    transform: scale(1.05); /* Button hover effect */
+}
+
+/* Container for the checkbox and label */
+.select-checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Adds spacing between the checkbox and label */
+    margin-bottom: 10px; /* Adds spacing below the container */
+  }
+  
+  /* Styling for the checkbox */
+  .select-checkbox-container input[type="checkbox"] {
+    width: 18px; /* Size of the checkbox */
+    height: 18px; /* Size of the checkbox */
+    accent-color: #007bff; /* Changes the checkbox tick color */
+    cursor: pointer; /* Shows a pointer cursor */
+  }
+  
+  /* Styling for the label */
+  .select-checkbox-container label {
+    font-size: 16px; /* Font size of the label */
+    color: #333333; /* Dark text color for readability */
+    font-weight: 500; /* Slightly bold label text */
+    cursor: pointer; /* Pointer cursor when hovering over the label */
+  }
+  
+  /* Optional hover effect for the label */
+  .select-checkbox-container label:hover {
+    text-decoration: underline; /* Underline the label text on hover */
+  }
+  

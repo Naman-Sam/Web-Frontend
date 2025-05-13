@@ -1,0 +1,159 @@
+@media (max-width: 768px) {/* Poster Section */
+.poster-container {
+    position: relative;
+    width: 100%; /* Full width of the screen */
+    background-color: #f5f5f5; /* Match background to site theme */
+    overflow: hidden; /* Prevent content overflow */
+  }
+  
+  .poster-carousel {
+    display: block; /* Ensure it's visible */
+    position: relative;
+    width: 100%;
+    height: 50vh; /* Further reduced height for a smaller look */
+  }
+  
+  .poster-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    height: 100%; /* Maintain height consistency with the carousel */
+  }
+  /* "Buy Now" Button */
+.buy-now-button {
+    position: absolute;
+    bottom: 20px; /* Adjusted placement */
+    right: 20px; /* Adjusted placement */
+    font-size: 14px; /* Compact text size */
+    padding: 6px 12px; /* Smaller padding for a sleek look */
+    background-color: orange;
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .buy-now-button:hover {
+    background-color: darkorange;
+    transform: scale(1.05); /* Slight zoom on hover */
+  }
+  
+  /* Dots Navigation */
+  .dots-navigation {
+    position: absolute;
+    bottom: 10px; /* Compact placement */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 6px; /* Smaller spacing for dots */
+  }
+  
+  .dot {
+    width: 8px; /* Reduced size */
+    height: 8px; /* Reduced size */
+    background-color: #ddd;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .dot:hover {
+    background-color: gray; /* Subtle hover effect */
+  }
+  
+  .dot.active {
+    background-color: orange;
+  }
+}
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .poster-carousel {
+      height: 40vh; /* Reduce height for tablets */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .poster-carousel {
+      height: 30vh; /* Further reduce height for mobile */
+    }
+  }
+  
+  
+  @media only screen and (min-width: 768px) and (max-width: 1024px) {
+    /* Poster Section */
+    .poster-container {
+      position: relative;
+      width: 100%; /* Full width of the screen */
+      background-color: #f5f5f5; /* Match background to site theme */
+      overflow: hidden; /* Prevent content overflow */
+    }
+    
+    .poster-carousel {
+      display: block; /* Ensure it's visible */
+      position: relative;
+      width: 100%;
+      height: 40vh; /* Reduced height for a more compact look */
+    }
+    
+    .poster-wrapper {
+      display: flex;
+      flex-wrap: nowrap;
+      width: 100%;
+      height: 100%; /* Maintain height consistency with the carousel */
+    }
+    
+    /* "Buy Now" Button */
+    .buy-now-button {
+      position: absolute;
+      bottom: 20px;     /* Adjusted placement */
+      right: 20px;      /* Adjusted placement */
+      font-size: 14px;  /* Compact text size */
+      padding: 6px 12px;/* Smaller padding for a sleek look */
+      background-color: orange;
+      border: none;
+      color: white;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      z-index: 10;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    
+    .buy-now-button:hover {
+      background-color: darkorange;
+      transform: scale(1.05); /* Slight zoom on hover */
+    }
+    
+    /* Dots Navigation */
+    .dots-navigation {
+      position: absolute;
+      bottom: 10px;              /* Compact placement */
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 6px;                  /* Smaller spacing for dots */
+    }
+    
+    .dot {
+      width: 8px;                /* Reduced size */
+      height: 8px;               /* Reduced size */
+      background-color: #ddd;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    
+    .dot:hover {
+      background-color: gray;    /* Subtle hover effect */
+    }
+    
+    .dot.active {
+      background-color: orange;
+    }
+  }
+  

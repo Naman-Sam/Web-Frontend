@@ -1,0 +1,177 @@
+
+
+/* Cart Layout */
+.cart-layout {
+    display: flex;
+    flex-direction: row; /* Two-column layout */
+    gap: 20px; /* Space between containers */
+}
+
+/* Left Section (Scrollable Container for Cart Items) */
+.cart-products-section {
+    flex: 1; /* Equal width with right section */
+    display: flex;
+    flex-direction: column; /* Items stack vertically */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    overflow-y: auto; /* Enable scrolling */
+    max-height: calc(200vh - 40px); /* Constrain height for scrolling */
+}
+
+.cart-products-section h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.loading-message {
+    font-size: 16px;
+    color: #555;
+    text-align: center;
+}
+
+.empty-cart {
+    text-align: center;
+}
+
+.empty-cart-message {
+    font-size: 18px;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+.browse-products-button {
+    padding: 10px 20px;
+    background-color: orange;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.browse-products-button:hover {
+    background-color: darkorange;
+    transform: scale(1.05); /* Button hover effect */
+}
+
+/* Cart Items List */
+.cart-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between items */
+}
+
+/* Individual Cart Item Styles */
+.cart-item-card {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Right Section (Fixed Order Summary) */
+.order-summary-section {
+    flex: 1; /* Equal width with left section */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: sticky; /* Sticky for fixed position */
+    top: 20px; /* Stay visible at the top */
+    height: fit-content; /* Automatically adjust height */
+}
+
+.order-summary-section h2 {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Order Items List */
+.order-items-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.order-item:last-child {
+    border-bottom: none;
+}
+
+/* Order Total Section */
+.order-total {
+    text-align: right;
+}
+
+.order-total h3 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Place Order Button */
+.place-order-button {
+    padding: 12px 20px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.place-order-button:hover {
+    background-color: darkgreen;
+    transform: scale(1.05); /* Button hover effect */
+}
+
+/* Main Place Order Button */
+.place-order-main-button {
+    width: 100%;
+    padding: 12px 20px;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.place-order-main-button:hover {
+    background-color: darkblue;
+    transform: scale(1.05);
+}
+
+.cart-header-title {
+    font-size: 44px;
+    color: orange;
+    display: flex; /* Enables the use of flexbox */
+    justify-content: center; /* Centers content horizontally */
+    align-items: center; /* Centers content vertically (if needed) */
+    text-align: center; /* Ensures proper text alignment */
+    margin: 0 auto; /* Centers the entire element within its container */
+}

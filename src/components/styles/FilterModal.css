@@ -1,0 +1,102 @@
+/* Filter Modal */
+.filter-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%; /* More responsive for smaller screens */
+    max-width: 500px;
+    padding: 25px; /* Slightly larger padding for better spacing */
+    background-color: #ffffff; /* Ensures background contrast */
+    border: 1px solid #ddd; /* Softer border */
+    border-radius: 12px; /* More rounded corners for modern look */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4); /* Stronger shadow for better depth */
+    z-index: 10000;
+    animation: fadeIn 0.3s ease-in-out; /* Smooth fade-in animation */
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -55%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* Close Icon */
+.close-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    color: #666; /* Subtle color for icon */
+    transition: color 0.3s ease, transform 0.2s ease; /* Smooth interactions */
+}
+
+.close-icon:hover {
+    color: #ff4d4d; /* Bright red on hover */
+    transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+/* Modal Heading */
+.filter-modal h3 {
+    margin-bottom: 20px;
+    font-size: 20px; /* Larger, more prominent font */
+    color: #444; /* Neutral but darker color for clarity */
+    text-align: center;
+    font-weight: 700; /* Bold heading for emphasis */
+}
+
+/* Form Styles */
+.filter-modal form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Larger spacing for cleaner layout */
+}
+
+/* Labels */
+.filter-modal label {
+    font-size: 16px; /* Slightly larger for readability */
+    color: #333;
+    font-weight: 500; /* Slightly bold for emphasis */
+}
+
+/* Select Inputs */
+.filter-modal select {
+    padding: 12px;
+    font-size: 15px;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 6px; /* Modern rounded edges */
+    background-color: #fafafa; /* Softer background for inputs */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.filter-modal select:focus {
+    border-color: #ff9900; /* Orange focus highlight */
+    box-shadow: 0 0 8px rgba(255, 153, 0, 0.5); /* Slight glow effect on focus */
+    outline: none;
+}
+
+/* Buttons */
+.filter-modal button {
+    background-color: #ff9900; /* Bright orange for attention */
+    color: #ffffff;
+    border: none;
+    padding: 12px 18px; /* Slightly larger padding for touch devices */
+    font-size: 17px;
+    border-radius: 6px;
+    font-weight: 600; /* Bold for emphasis */
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.filter-modal button:hover {
+    background-color: #cc7a00; /* Darker orange on hover */
+    box-shadow: 0 4px 12px rgba(204, 122, 0, 0.5); /* Hover shadow for depth */
+}

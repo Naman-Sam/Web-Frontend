@@ -1,0 +1,44 @@
+@media (max-width: 480px) {
+  
+  .verify-email-form {
+    width: 360px !important;
+    margin: 0 auto;
+    padding: 1.5rem;
+    gap: 1rem;
+  }
+  
+  .verify-title {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+  
+  .otp-input {
+    font-size: 0.9rem;
+    padding: 0.7rem;
+  }
+  
+  .verify-button {
+    font-size: 0.9rem;
+    padding: 0.8rem 1rem;
+  }
+  
+  .helper-links {
+    font-size: 0.8rem;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  
+  .back-to-signup {
+    text-align: center;
+  }
+  
+  .otp-reminder {
+    font-size: 0.85rem;
+    margin-top: 10px;
+  }
+  
+  .resend-link {
+    font-size: 0.9rem;
+  }
+}

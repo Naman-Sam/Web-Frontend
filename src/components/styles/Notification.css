@@ -1,0 +1,80 @@
+/* src/styles/Notification.css */
+
+/* Container for notifications - fixed so it follows the viewport */
+.notification-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 9999;
+    pointer-events: none; /* Prevent blocking other elements; adjust if clickable */
+  }
+  
+  /* Notification Styles */
+  .notification {
+    position: fixed;
+    right: 20px;
+    background-color: rgba(255, 0, 0, 0.2);
+    border: 2px solid red;
+    border-radius: 8px;
+    padding: 10px 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    color: red;
+    font-weight: bold;
+    font-size: 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    pointer-events: auto;
+  }
+  
+  /* Notification Hover Effect */
+  .notification:hover {
+    color: #ff4d4d;
+    transform: scale(1.05);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Error Notification */
+  .error-notification {
+    background-color: rgba(255, 0, 0, 0.1);
+    color: red;
+    border: 2px solid red;
+  }
+  
+  /* Success Notification */
+  .success-notification {
+    background-color: rgba(0, 255, 0, 0.1);
+    color: green;
+    border: 2px solid green;
+  }
+  
+  /* Responsive Styles */
+  
+  /* For devices with a max-width of 768px */
+  @media screen and (max-width: 768px) {
+    .notification-container {
+      right: 10px;
+    }
+    .notification {
+      right: 10px;
+      max-width: 250px;
+      font-size: 0.9rem;
+      padding: 8px 12px;
+    }
+  }
+  
+  /* For devices with a max-width of 480px */
+  @media screen and (max-width: 480px) {
+    .notification-container {
+      right: 5px;
+      left: 5px;
+    }
+    .notification {
+      right: 5px;
+      max-width: 90%;
+      font-size: 0.85rem;
+      padding: 6px 8px;
+    }
+  }
+  

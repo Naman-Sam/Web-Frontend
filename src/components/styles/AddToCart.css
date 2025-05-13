@@ -1,0 +1,351 @@
+/* Popup Overlay */
+.popup-overlay {
+    position: fixed; /* Cover the entire viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dimmed background */
+    display: flex;
+    justify-content: center; /* Center the modal horizontally */
+    align-items: center; /* Center the modal vertically */
+    z-index: 999; /* Ensure it appears above other elements */
+  }
+  
+  /* Add to Cart Modal */
+  .add-to-cart-container {
+    background: #fff; /* White background for contrast */
+    border-radius: 15px; /* Rounded corners for a modern look */
+    padding: 20px 30px; /* Internal spacing */
+    max-width: 600px; /* Restrict max width */
+    width: 90%; /* Responsive design */
+    text-align: center; /* Center-align content */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); /* Drop shadow for depth */
+    animation: slide-down 0.3s ease; /* Smooth appearance animation */
+    position: relative; /* For positioning the close button */
+  }
+  
+  /* Animation for Modal */
+  @keyframes slide-down {
+    from {
+      transform: translateY(-20px); /* Slightly off-screen */
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0); /* Positioned */
+      opacity: 1;
+    }
+  }
+  
+  /* Close Button */
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none; /* No background */
+    border: none; /* Remove border */
+    font-size: 20px; /* Sizable close icon */
+    color: #ff6f00; /* Orange theme color */
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
+  }
+  .close-button:hover {
+    transform: scale(1.1); /* Slight enlargement on hover */
+    color: orange; /* Lighter orange on hover */
+  }
+  
+  /* Title Styling */
+  .add-to-cart-title {
+    font-size: 24px; /* Large title size */
+    font-weight: bold;
+    color: #ff6f00; /* Orange theme */
+    margin-bottom: 15px; /* Space below title */
+  }
+  
+  /* Product Details */
+  .product-details {
+    font-size: 16px;
+    color: #555; /* Subtle dark text */
+    margin-bottom: 20px; /* Space below details */
+  }
+  
+  /* Quantity Input */
+  .quantity-container {
+    margin: 15px 0; /* Space above and below */
+    text-align: left; /* Align text left */
+  }
+  .quantity-container label {
+    font-size: 16px; /* Label font size */
+    color: #333; /* Neutral text color */
+    display: block; /* Label occupies full line */
+    margin-bottom: 5px; /* Space below label */
+  }
+  .quantity-container input[type="number"] {
+    width: 100px; /* Compact width */
+    padding: 7px; /* Internal spacing */
+    border: 2px solid #ff6f00; /* Orange border */
+    border-radius: 8px; /* Smooth rounded edges */
+    font-size: 14px; /* Comfortable text size */
+    text-align: center; /* Center-align quantity text */
+  }
+  
+  /* Type and Options Styling */
+  .types-container {
+    margin: 20px 0; /* Space above and below */
+    text-align: left; /* Align content left */
+  }
+  .types-container h3 {
+    font-size: 18px; /* Section title size */
+    color: #ff6f00; /* Orange theme */
+    margin-bottom: 10px; /* Space below section title */
+  }
+  .options-list {
+    list-style: none; /* Remove default bullets */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+  }
+  .options-list li {
+    font-size: 14px; /* Comfortable option text size */
+    color: #333; /* Neutral text color */
+    margin-bottom: 10px; /* Space below each option */
+    display: flex; /* Flex for alignment */
+    align-items: center; /* Center checkbox and text */
+  }
+  .options-list input[type="checkbox"] {
+    margin-right: 10px; /* Space between checkbox and label */
+  }
+  
+  /* Buttons */
+  .modal-buttons {
+    display: flex;
+    justify-content: space-between; /* Space buttons evenly */
+    gap: 15px; /* Add space between buttons */
+    margin-top: 20px; /* Space above buttons */
+  }
+  .modal-buttons button {
+    padding: 12px 20px; /* Internal spacing */
+    border: none; /* Remove default border */
+    border-radius: 8px; /* Rounded corners */
+    font-size: 16px; /* Button font size */
+    font-weight: bold; /* Bold text */
+    cursor: pointer;
+    width: 48%; /* Buttons take up equal space */
+    transition: all 0.2s ease; /* Smooth hover effect */
+  }
+  /* Add to Cart Button */
+  .add-to-cart-button {
+    background: #ff6f00; /* Orange background */
+    color: white; /* White text for contrast */
+  }
+  .add-to-cart-button:hover {
+    background: orange; /* Slightly lighter on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Lift effect */
+    transform: translateY(-2px); /* Slight hover animation */
+  }
+  /* Cancel Button */
+  .cancel-button {
+    background: #ddd; /* Neutral gray background */
+    color: #555; /* Subtle dark text */
+  }
+  .cancel-button:hover {
+    background: #bbb; /* Darker gray on hover */
+    transform: translateY(-2px); /* Slight hover animation */
+  }
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .add-to-cart-container {
+      max-width: 90%; /* Expand to occupy more screen space */
+      padding: 15px; /* Adjust padding */
+    }
+    .modal-buttons button {
+      width: 100%; /* Full width for smaller screens */
+    }
+    .modal-buttons {
+      flex-direction: column; /* Stack buttons */
+      gap: 10px; /* Smaller gap between buttons */
+    }
+  }
+  
+  /* Unique Popup Overlay */
+  .unique-popup-overlay {
+    position: fixed; /* Cover the entire viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
+  
+  /* Unique Add to Cart Modal */
+  .unique-add-to-cart-container {
+    background: #fff;
+    border-radius: 15px;
+    padding: 20px 30px;
+    max-width: 600px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    animation: unique-slide-down 0.3s ease;
+    position: relative;
+  }
+  
+  /* Unique Modal Animation */
+  @keyframes unique-slide-down {
+    from {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  /* Unique Close Button */
+  .unique-close-button {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #ff6f00;
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
+  }
+  .unique-close-button:hover {
+    transform: scale(1.1);
+    color: orange;
+  }
+  
+  /* Unique Title Styling */
+  .unique-add-to-cart-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff6f00;
+    margin-bottom: 15px;
+  }
+  
+  /* Unique Product Details */
+  .unique-product-details {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+  }
+  
+  /* Unique Quantity Input */
+  .unique-quantity-container {
+    margin: 15px 0;
+    text-align: left;
+  }
+  .unique-quantity-container label {
+    font-size: 16px;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+  }
+  .unique-quantity-container input[type="number"] {
+    width: 100px;
+    padding: 7px;
+    border: 2px solid #ff6f00;
+    border-radius: 8px;
+    font-size: 14px;
+    text-align: center;
+  }
+  
+  /* Unique Type and Options Styling */
+  .unique-types-container {
+    margin: 20px 0;
+    text-align: left;
+  }
+  .unique-types-container h3 {
+    font-size: 18px;
+    color: #ff6f00;
+    margin-bottom: 10px;
+  }
+  .unique-options-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .unique-options-list li {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+  }
+  .unique-options-list input[type="checkbox"] {
+    margin-right: 10px;
+  }
+  
+  /* Unique Modal Buttons */
+  .unique-modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 20px;
+  }
+  .unique-modal-buttons button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 48%;
+    transition: all 0.2s ease;
+  }
+  /* Unique Add to Cart Button */
+  .unique-add-to-cart-button {
+    background: #ff6f00;
+    color: white;
+  }
+  .unique-add-to-cart-button:hover {
+    background: orange;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+  }
+  /* Unique Cancel Button */
+  .unique-cancel-button {
+    background: #ddd;
+    color: #555;
+  }
+  .unique-cancel-button:hover {
+    background: #bbb;
+    transform: translateY(-2px);
+  }
+  /* Responsive Unique Modal Design */
+  @media (max-width: 768px) {
+    .unique-add-to-cart-container {
+      max-width: 90%;
+      padding: 15px;
+    }
+    .unique-modal-buttons button {
+      width: 100%;
+    }
+    .unique-modal-buttons {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+  
+  /* Disabled (locked) radio option labels */
+  .disabled-option {
+    color: grey;
+    cursor: not-allowed;
+  }
+  
+  /* Prevent text selection on unique options list */
+  .unique-options-list,
+  .unique-options-list label {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  

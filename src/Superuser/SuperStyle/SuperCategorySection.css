@@ -1,0 +1,182 @@
+/* SuperCategorySection.css - Updated Version with Unique Class Names */
+
+:root {
+    --cat-primary: #FFA500;       /* Vibrant Orange */
+    --cat-primary-dark: #cc8400;
+    --cat-secondary: #000;        /* Black */
+    --cat-light: #f9f9f9;         /* Light Grey */
+    --cat-border: #ddd;
+    --cat-font: 'Roboto', sans-serif;
+  }
+  
+  
+  .cat-section h2 {
+    color: var(--cat-primary);
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  
+  /* Display Mode */
+  .cat-display {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .cat-chip {
+    background-color: var(--cat-primary);
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    user-select: none;
+    position: relative;
+  }
+  
+  .cat-chip.selected {
+    background-color: var(--cat-secondary);
+  }
+  
+  /* Section Buttons */
+  .cat-section button {
+    background-color: var(--cat-primary);
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .cat-section button:hover {
+    background-color: var(--cat-primary-dark);
+  }
+  
+  /* Edit Mode Inputs (in cat-edit mode) */
+  .cat-edit input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--cat-border);
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  /* List of Categories */
+  .cat-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  /* Add Category Section */
+  .cat-add {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+  }
+  
+  .cat-add input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid var(--cat-border);
+    border-radius: 5px;
+  }
+  
+  .cat-add button {
+    background-color: var(--cat-primary);
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .cat-add button:hover {
+    background-color: var(--cat-primary-dark);
+  }
+  
+  /* Custom Context Menu for Categories */
+  .cat-context-menu {
+    position: absolute;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 2000;
+  }
+  
+  .cat-context-menu button {
+    display: block;
+    width: 100%;
+    border: none;
+    background: none;
+    padding: 8px 12px;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .cat-context-menu button:hover {
+    background-color: var(--cat-light);
+  }
+  
+  /* Toggle Edit Mode Button (if needed externally) */
+  .cat-toggle-edit {
+    margin-top: 10px;
+  }
+  .category-edit-user-one {
+    padding: 8px 12px;
+    background-color: rgb(0, 0, 0);
+    border: red;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    /* Smooth hover effects */
+  }
+  
+  .category-edit-user-one:hover {
+    background-color: darkorange;
+    transform: scale(1.1);
+    /* Slight enlargement on hover */
+  }
+  
+  .category-edit-user-one-save {
+    padding: 8px 12px;
+    background-color: rgb(75, 154, 0);
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    /* Smooth hover effects */
+  }
+  
+  .category-edit-user-one-save:hover {
+    background-color: rgb(2, 106, 21);
+    transform: scale(1.1);
+    /* Slight enlargement on hover */
+  }
+  
+  .category-edit-user-one-cancel {
+    padding: 8px 12px;
+    background-color: rgb(205, 0, 0);
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    /* Smooth hover effects */
+  }
+  
+  .category-edit-user-one-cancel:hover {
+    background-color: rgb(0, 0, 0);
+    transform: scale(1.1);
+    /* Slight enlargement on hover */
+  }

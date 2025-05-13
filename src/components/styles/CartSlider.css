@@ -1,0 +1,106 @@
+/* Cart Container */
+.cart-container {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Initially hidden */
+    width: 33.33%; /* Take up 1/3 of the viewport width */
+    height: 100%; /* Full height */
+    background-color: white; /* Background color */
+    color: black; /* Text color for readability */
+    box-shadow: -4px 0 8px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+    transition: right 0.3s ease-in-out; /* Smooth sliding animation */
+    z-index: 999; /* Overlay everything */
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    overflow-y: auto; /* Enable scrolling for overflowing content */
+  }
+  
+  /* Open State */
+  .cart-container.open {
+    right: 0; /* Slide into view */
+  }
+  
+  /* Close Button */
+  .close-button {
+    background: none;
+    border: none;
+    font-size: 24px; /* Larger icon size */
+    color: black;
+    align-self: flex-end; /* Position at top-right */
+    cursor: pointer;
+  }
+  
+  .close-button:hover {
+    color: orange; /* Highlight on hover */
+    transform: scale(1.1); /* Slight enlargement */
+  }
+  
+  /* Cart Header */
+  .cart-header {
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px 0;
+    color: black;
+  }
+  
+  /* Cart Items Section */
+  .cart-items-section {
+    flex: 1; /* Allow this section to grow and take up space */
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between product cards */
+  }
+  
+  .empty-cart-message {
+    text-align: center;
+    font-size: 16px;
+    color: #888; /* Subtle text for empty cart message */
+  }
+  
+  /* Cart Actions Section */
+  .cart-actions {
+    margin-top: auto; /* Push to the bottom */
+    background-color: white;
+    padding: 10px 20px;
+    box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.1); /* Shadow for separation */
+    text-align: center;
+  }
+  
+  /* Go to Cart Button */
+  .go-to-cart-button {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: orange;
+    color: white; /* Text color */
+    border: none; /* Remove border */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth interactions */
+  }
+  
+  .go-to-cart-button:hover {
+    background-color: darkorange;
+    transform: scale(1.05); /* Hover effect */
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .cart-container {
+      width: 100%; /* Full width on small screens */
+    }
+  
+    .cart-header {
+      font-size: 18px; /* Adjust header size for smaller screens */
+    }
+  
+    .go-to-cart-button {
+      font-size: 14px;
+      padding: 10px 15px; /* Smaller button size */
+    }
+  }
+  

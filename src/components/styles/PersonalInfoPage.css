@@ -1,0 +1,181 @@
+/* --- Personal Info Page Container --- */
+.personal-info-page {
+    display: flex;
+    flex-direction: column; /* Arrange items vertically */
+    align-items: center; /* Center content horizontally */
+    margin: 40px auto; /* Center the page with margin */
+    padding: 30px; /* Space inside the container */
+    background: #ffffff; /* Clean white background */
+    border-radius: 15px; /* Smooth rounded corners */
+    border: 1px solid #ddd; /* Subtle border */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Depth effect */
+    max-width: 900px; /* Limit the width for larger screens */
+    width: 90%; /* Adapt to smaller screens */
+    text-align: left; /* Align text properly */
+}
+
+/* --- Title Styling --- */
+.personal-info-title {
+    font-size: 2rem; /* Large title font size */
+    font-weight: bold; /* Strong emphasis */
+    color: #ff6f00; /* Vibrant orange for attention */
+    margin-bottom: 30px; /* Space below the title */
+}
+
+/* --- Information Display --- */
+.info-display p {
+    font-size: 1rem; /* Standard text size */
+    margin: 10px 0; /* Spacing between lines */
+    color: #333; /* Neutral dark color for readability */
+}
+
+/* --- Form Styling --- */
+.info-form {
+    width: 100%; /* Full width form */
+    display: flex;
+    flex-direction: column; /* Stack inputs vertically */
+    gap: 15px; /* Space between elements */
+}
+
+.info-form label {
+    font-size: 1rem; /* Comfortable text size */
+    color: #555; /* Subtle text color */
+    font-weight: bold; /* Strong emphasis */
+}
+
+.info-form input {
+    width: 100%; /* Full width input fields */
+    padding: 12px; /* Comfortable padding inside the field */
+    font-size: 1rem; /* Readable font size */
+    border: 1px solid #ddd; /* Subtle border for inputs */
+    border-radius: 8px; /* Rounded corners */
+    background: #f9f9f9; /* Light gray background */
+    transition: all 0.3s ease; /* Smooth focus effects */
+}
+
+.info-form input:focus {
+    border-color: #ff6f00; /* Highlight border with orange */
+    box-shadow: 0 0 5px rgba(255, 111, 0, 0.5); /* Glow effect on focus */
+    outline: none; /* Remove default outline */
+}
+
+/* --- Buttons --- */
+.edit-address-button {
+    background: #ff6f00; /* Vibrant orange */
+    color: white; /* Contrast text */
+    font-size: 1rem; /* Comfortable text size */
+    font-weight: bold; /* Emphasized button text */
+    padding: 12px 20px; /* Spacious padding */
+    border: none; /* Remove default border */
+    border-radius: 8px; /* Smooth rounded corners */
+    cursor: pointer; /* Indicate interactivity */
+    transition: all 0.3s ease; /* Smooth hover and focus effects */
+    margin-top: 20px; /* Space above button */
+    width: fit-content; /* Adjust size based on text */
+}
+
+.action-button-reset-password{
+background: #ffffff; /* Vibrant orange */
+color: Orange; /* Contrast text */
+font-size: 1rem; /* Comfortable text size */
+font-weight: bold; /* Emphasized button text */
+padding: 12px 20px; /* Spacious padding */
+border-radius: 5px; /* Remove default border */
+border-color:orange;
+border-radius: 8px; /* Smooth rounded corners */
+cursor: pointer; /* Indicate interactivity */
+transition: all 0.3s ease; /* Smooth hover and focus effects */
+margin-top: 20px; /* Space above button */
+width: fit-content; /* Adjust size based on text */
+}
+
+.action-button-Email-Own{
+    background: #ffffff; /* Vibrant orange */
+    color: Orange; /* Contrast text */
+    font-size: 1rem; /* Comfortable text size */
+    font-weight: bold; /* Emphasized button text */
+    padding: 12px 20px; /* Spacious padding */
+    border-radius: 5px; /* Remove default border */
+    border-color:orange;
+    border-radius: 8px; /* Smooth rounded corners */
+    cursor: pointer; /* Indicate interactivity */
+    transition: all 0.3s ease; /* Smooth hover and focus effects */
+    margin-top: 20px; /* Space above button */
+    width: fit-content; /* Adjust size based on text */
+    }
+
+.action-button-reset-password:hover {
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow effect */
+        transform: translateY(-2px); /* Slight lift effect */
+    }
+
+.action-button-Email-Own:hover {
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow effect */
+        transform: translateY(-2px); /* Slight lift effect */
+    }
+.edit-address-button:hover {
+    background: orange; /* Lighter orange on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+/* --- Error Message Styling --- */
+.error {
+    color: red; /* Emphasize error messages */
+    font-size: 1rem; /* Standard readable size */
+    margin-top: 20px; /* Space above error messages */
+    text-align: center; /* Center-align errors */
+}
+
+.loading-info-for-user {
+    display: flex; /* Flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Full viewport height */
+    font-size: 1.5rem; /* Larger font size for loading text */
+    color: #555; /* Neutral color for loading text */
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .personal-info-page {
+        width: 95%; /* Adapt container width for tablets */
+        padding: 20px; /* Reduce padding for smaller screens */
+    }
+
+    .personal-info-title {
+        font-size: 1.8rem; /* Adjust title size for tablets */
+    }
+
+    .info-form label,
+    .info-form input,
+    .info-display p {
+        font-size: 0.9rem; /* Slightly smaller font size */
+    }
+
+    .edit-address-button {
+        font-size: 0.9rem; /* Reduce button font size */
+        padding: 10px 15px; /* Compact padding */
+    }
+}
+
+@media (max-width: 480px) {
+    .personal-info-page {
+        width: 95%; /* Further reduce container width for mobile */
+        padding: 15px; /* Compact padding for smaller screens */
+    }
+
+    .personal-info-title {
+        font-size: 1.6rem; /* Further adjust font size for small screens */
+    }
+
+    .info-form label,
+    .info-form input {
+        font-size: 0.85rem; /* Adjust font size for mobile */
+    }
+
+    .edit-address-button {
+        font-size: 0.85rem; /* Compact button size for mobile */
+        padding: 8px 10px; /* Compact padding */
+    }
+}

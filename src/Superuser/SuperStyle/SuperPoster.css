@@ -1,0 +1,359 @@
+
+  
+.poster-gage{
+
+    text-align: center;
+  } 
+  
+
+  .refresh-button-poster-gage{
+
+    text-align: center;
+  }
+  /* Section Containers */
+  .poster-list-section,
+  .add-poster-section {
+    margin: 20px auto;
+    max-width: 800px;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Existing Posters List */
+  .poster-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+  }
+  
+  .poster-item {
+    position: relative;
+  }
+  
+  .poster-item img {
+    border-radius: 4px;
+    transition: transform 0.2s ease;
+    width: 300px;
+    cursor: pointer;
+  }
+  
+  .poster-item img:hover {
+    transform: scale(1.02);
+  }
+  
+  /* Refresh Button */
+  .refresh-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    vertical-align: middle;
+  }
+  
+  /* Add Poster Section */
+  .add-poster-section form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+  }
+  
+  .add-poster-section input[type="file"] {
+    margin: 10px 0;
+  }
+  
+  /* Product Selection Block */
+  .product-selection {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .selected-product {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .selected-product p {
+    margin: 0;
+    font-weight: bold;
+  }
+  
+  .selected-product button {
+    background-color: #ff9800;
+    padding: 5px 10px;
+  }
+  
+  /* Image Preview & Actions */
+  .preview-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .preview-actions img {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  /* Context Menu Styling */
+  .context-menu {
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    list-style: none;
+    padding: 10px;
+  }
+  
+  .context-menu li {
+    padding: 8px 12px;
+    cursor: pointer;
+  }
+  
+  .context-menu li:hover {
+    background-color: #f0f0f0;
+  }
+  
+  /* Crop Modal */
+  .crop-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .crop-modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 600px;
+    width: 90%;
+    text-align: center;
+  }
+  
+  .crop-modal-actions {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .crop-modal-actions button {
+    padding: 8px 16px;
+    border-radius: 3px;
+  }
+  
+  .crop-modal-actions button:first-child {
+    background-color: #4caf50;
+  }
+  
+  .crop-modal-actions button:last-child {
+    background-color: #f44336;
+  }
+  
+  /* Product Modal */
+  .product-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 800px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+  
+  .modal-content h3 {
+    margin-top: 0;
+    text-align: center;
+  }
+  
+  /* Product List inside Product Modal */
+  .product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin: 15px 0;
+  }
+  
+  .product-list > div {
+    cursor: pointer;
+  }
+  
+  .product-modal button {
+    display: block;
+    margin: 0 auto;
+    padding: 8px 16px;
+    background-color: #f44336;
+    border-radius: 3px;
+  }
+  
+  /* Poster Grid - Fixed 2 Columns and 3 Rows */
+  .poster-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 16px;
+    margin-top: 20px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .grid-item {
+    width: 100%;
+    height: 250px; /* Fixed height */
+    border: 1px dashed #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* If image is larger, it is cropped to fit */
+  }
+  
+  /* Empty slot styling */
+  .empty-slot {
+    cursor: pointer;
+    font-size: 48px;
+    color: #888;
+  }
+  
+  /* Add Poster Modal Popup Specific Styles */
+  .add-poster-modal {
+    position: relative;
+  }
+  
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .close-modal {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  .poster-gage-connect-product {
+    padding: 8px 12px;
+    background-color: orange;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    /* Smooth hover effects */
+  }
+  
+  .poster-gage-connect-product:hover {
+    background-color: darkorange;
+    transform: scale(1.1);
+    /* Slight enlargement on hover */
+  }
+
+  .poster-gage-connect-product-select {
+    padding: 8px 12px;
+    background-color: orange;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    /* Smooth hover effects */
+  }
+  
+  .poster-gage-connect-product-select:hover {
+    background-color: darkorange;
+    transform: scale(1.1);
+    /* Slight enlargement on hover */
+  }
+
+  .poster-gage-connect-product-crop {
+    padding: 8px 12px;
+    background-color: orange;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    /* Smooth hover effects */
+  }
+  
+  .poster-gage-connect-product-crop:hover {
+    background-color: darkorange;
+    transform: scale(1.1);
+    /* Slight enlargement on hover */
+  }
+
+  .poster-gage-connect-product-remove {
+    padding: 8px 12px;
+    background-color: rgb(200, 3, 3);
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    /* Smooth hover effects */
+  }
+  
+  .poster-gage-connect-product-remove:hover {
+    background-color: rgb(0, 0, 0);
+    transform: scale(1.1);
+    /* Slight enlargement on hover */
+  }
+
+  .poster-gage-connect-product-add {
+    padding: 8px 12px;
+    background-color: rgb(12, 167, 1);
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    /* Smooth hover effects */
+  }
+  
+  .poster-gage-connect-product-add:hover {
+    background-color: rgb(55, 154, 2);
+    transform: scale(1.1);
+    /* Slight enlargement on hover */
+  }

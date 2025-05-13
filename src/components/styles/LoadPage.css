@@ -1,0 +1,44 @@
+
+/* Message container for loading, error, or no products found */
+.message-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 150px; /* Enough space for messages */
+    margin: 20px 0;
+    width: 100%; /* Use full width without affecting the grid */
+  }
+  
+  /* Loading message */
+  .loading-message {
+    color: #000000; /* Blue color to indicate progress */
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  /* Error message */
+  .error-message {
+    color: #ff4d4f; /* Bright red for emphasis */
+    background-color: #ffe6e6; /* Light red background for visibility */
+    border: 1px solid #ff4d4f;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    font-size: 20px; /* Larger font for better visibility */
+    font-weight: bold;
+    width: 80%;
+    margin: 10px auto; /* Center horizontally */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+  
+  /* No products found message */
+  .no-products-message {
+    color: #000000; /* Orange for a softer highlight */
+    font-size: 18px;
+    text-align: center;
+    margin: 10px auto; /* Center horizontally */
+    font-style: italic; /* Subtle style to differentiate it */
+  }
+  

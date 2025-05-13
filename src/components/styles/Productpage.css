@@ -1,0 +1,499 @@
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black; /* Match website theme */
+  color: white;
+  padding: 10px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add a shadow */
+}
+
+/* Discover Section */
+.discover-section {
+  text-align: center;
+  padding: 20px 0;
+  font-size: 32px;
+  color: orange;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: #f2f2f2;
+  border-bottom: 2px solid #ddd;
+}
+
+/* Content Container */
+.content-container {
+  display: flex;
+  gap: 20px;
+  max-width: 1400px;
+  margin: 20px auto;
+  padding: 20px;
+  background: white; /* Clean white background */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+/* Left Section (Static) */
+.left-section {
+  flex: 40%;
+  position: sticky;
+  top: 20px;
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: whitesmoke;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Back Button */
+.left-back-button {
+  align-self: flex-start;
+  background: orange;
+  border: none;
+  color: white;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.left-back-button:hover {
+  background: darkorange;
+}
+
+   .thumbnails-wrapper {
+    position: absolute;
+    top: 100px;
+    left: 23px;
+    max-height: 350px;
+    overflow: hidden; /* ensures the gradient overlay isn’t pushed by scrolling content */
+    z-index: 10;
+  }
+  
+  /* The actual scrollable thumbnails container. */
+  .left-thumbnails {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 20px;
+    max-height: 350px;
+    overflow-y: auto;
+    padding-bottom: 40px; /* space for the gradient overlay so content isn't hidden */
+    /* Remove absolute positioning since the wrapper already handles positioning */
+  }
+  
+  /* Pseudo-element on the wrapper to provide a fixed gradient at the bottom */
+  .thumbnails-wrapper::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40px; /* Adjust to match the desired gradient height */
+    
+    /* Gradient fades from transparent to opaque at the container's background color.
+       Update RGBA values if your background is different. */
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+    
+    pointer-events: none; /* Ensures the overlay doesn't interfere with interactions */
+  }  
+
+.left-thumbnail {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+.left-thumbnail:hover {
+  border-color: orange;
+  transform: scale(1.1);
+}
+
+/* Main Image */
+.left-main-image {
+  width: 80%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  position: relative;
+  top: 3px;
+  left: 100px;
+  transition: transform 0.3s ease;
+}
+.left-main-image:hover {
+  transform: scale(1.05);
+}
+
+/* Action Buttons */
+.left-action-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+.left-add-to-cart-button,
+.left-buy-now-button {
+  flex: 1;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.left-add-to-cart-button {
+  background-color: orange;
+  border: 2px solid orange;
+  border-radius: 8px;
+  padding: 7px 15px;
+  color: white;
+  white-space: nowrap;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.left-add-to-cart-button:hover {
+  color: black;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+.left-buy-now-button {
+  background-color: orange;
+  border: 2px solid orange;
+  border-radius: 8px;
+  padding: 15px 20px;
+  color: white;
+  white-space: nowrap;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.left-buy-now-button:hover {
+  color: black;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+.left-edit-product-button-preview,
+.product-id-display-preview {
+  flex: 1;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.left-edit-product-button-preview {
+  background-color: orange;
+  border: 2px solid orange;
+  border-radius: 8px;
+  padding: 7px 15px;
+  color: white;
+  white-space: nowrap;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.left-edit-product-button-preview:hover {
+  color: black;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+.product-id-display-preview {
+  background-color: orange;
+  border: 2px solid orange;
+  border-radius: 8px;
+  padding: 15px 20px;
+  color: white;
+  white-space: nowrap;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.product-id-display-preview:hover {
+  color: black;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Right Section (Scrollable) */
+.right-section {
+  flex: 60%;
+  padding: 20px;
+  overflow-y: auto; /* Enable scrolling */
+  max-height: 80vh; /* Limit height for scrolling */
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Product Title */
+.right-product-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: black;
+  text-transform: uppercase;
+}
+
+/* Meta Info (Ratings & Reviews) */
+.right-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  color: orange;
+}
+.right-rating {
+  font-size: 20px;
+  color: gold; /* Golden stars for rating */
+}
+.right-total-reviews {
+  font-size: 16px;
+  color: #888;
+}
+
+/* Price Section */
+.right-price {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 20px;
+}
+.right-original-price {
+  text-decoration: line-through;
+  color: #888;
+}
+.right-discounted-price {
+  font-size: 24px;
+  font-weight: bold;
+  color: #e74c3c;
+}
+.right-current-price {
+  font-size: 24px;
+  font-weight: bold;
+  color: black;
+}
+
+/* Types Container */
+.types-container-umi {
+  margin-top: 30px;
+  padding: 20px;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+.types-container-umi h2 {
+  font-size: 20px;
+  color: orange;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+.type-card {
+  margin-bottom: 15px;
+}
+.type-title-umi {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+.options-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.type-option-button {
+  background-color: orange;
+  border: 2px solid orange;
+  border-radius: 8px;
+  padding: 7px 15px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  white-space: nowrap;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.type-option-button:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  color: black;
+}
+
+/* Selected Option Style */
+.type-option-button.type-option-selected {
+  background-color: black;
+  border: 2px solid black;
+  color: white;
+}
+
+/* Actions Container */
+.type-actions-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  gap: 10px;
+}
+.type-get-price-button,
+.type-clear-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+.type-get-price-button {
+  background-color: green;
+}
+.type-get-price-button:hover {
+  background-color: darkgreen;
+}
+.type-clear-button {
+  background-color: red;
+}
+.type-clear-button:hover {
+  background-color: darkred;
+}
+
+/* Combo Price Display */
+.type-combo-price-display {
+  margin-top: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+.type-combo-error-message {
+  font-size: 16px;
+  color: red;
+  font-weight: bold;
+  margin-top: 10px;
+}
+.right-combo-note {
+  font-size: 18px;
+  color: rgb(25, 0, 255);
+}
+
+/* Description Container */
+.description-container {
+  margin-top: 30px;
+  padding: 20px;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+.description-container h2 {
+  font-size: 20px;
+  color: orange;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+.description-container p {
+  line-height: 1.6;
+  color: #333;
+}
+
+/* Full-Screen Image Preview */
+.full-preview {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9); /* Semi-transparent black background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.full-preview-image {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  border-radius: 10px;
+}
+.close-preview {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: orange;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.close-preview:hover {
+  background: darkorange;
+}
+
+/* Updated Right Meta Section */
+.right-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  color: orange;
+}
+.right-rating {
+  font-size: 20px;
+  color: gold; /* Golden stars for rating */
+}
+
+/* Out of Stock Label */
+.out-of-stock-label {
+  color: #ff4d4d; /* Bright red for emphasis */
+  background-color: #ffecec; /* Light red background for subtle contrast */
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-weight: bold;
+  text-align: center;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+/* Share Button */
+.product-share-button {
+  color: whitesmoke; /* White text for readability */
+  background-color: whitesmoke;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 24px;
+  margin-left: 10px;
+  transition: background-color 0.3s ease;
+}
+.product-share-button i {
+  color: #000000; /* Black text for emphasis */
+  font-weight: bold;
+}
+.product-share-button i:hover {
+  color: #a1a1a1; /* Darker shade on hover */
+}
+
+.left-buy-now-button--out-of-stock {
+  background-color: rgb(185, 185, 185);
+  border: 2px solid rgb(95, 95, 95);
+  border-radius: 8px;
+  padding: 15px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  white-space: nowrap;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+/* Disabled Option Style */
+.type-option-button.option-disabled {
+  background-color: #d3d3d3; /* Light grey background */
+  color: #888; /* Dimmed text color */
+  cursor: not-allowed; /* Change cursor to indicate it's not clickable */
+  border: 2px solid #d3d3d3;
+  box-shadow: none; /* Remove shadow for disabled options */
+}

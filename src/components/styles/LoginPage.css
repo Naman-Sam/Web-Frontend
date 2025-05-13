@@ -1,0 +1,21 @@
+/* OTP Reminder Message */
+.otp-reminder {
+    font-size: 14px; /* Slightly smaller text for supplementary message */
+    color: #ff0000; /* Neutral color for non-intrusive text */
+    margin-top: 10px; /* Space between reminder and input field */
+    line-height: 1.5; /* Improve readability */
+  }
+  
+  /* Resend OTP Link */
+  .resend-link {
+    color: orange; /* Highlighted text for action */
+    cursor: pointer; /* Pointer cursor for interactivity */
+    text-decoration: underline; /* Underlined for clarity */
+  }
+  
+  .resend-link:hover {
+    color: #ff5722; /* Darker orange on hover */
+    text-decoration: none; /* Remove underline on hover */
+    font-weight: bold; /* Emphasize hover effect */
+  }
+  

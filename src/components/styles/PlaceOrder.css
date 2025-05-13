@@ -1,0 +1,345 @@
+/* Full-Screen Overlay */
+.place-order-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Dimmed background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* Place Order Container */
+.place-order-container {
+  background: #fff;
+  border-radius: 15px;
+  padding: 20px 30px;
+  max-width: 600px;
+  width: 90%;
+  max-height: 85vh;           /* Limits height to 85% of viewport */
+  overflow-y: auto;           /* Scroll if content overflows */
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  animation: popup-animation 0.3s ease;
+  position: relative;
+}
+
+.disabled-option {
+  color: grey;
+  cursor: not-allowed;
+}
+
+
+/* Popup Animation */
+@keyframes popup-animation {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Close Button */
+.place-order-close-button {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #ff6f00;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+.place-order-close-button:hover {
+  color: #ff4500;
+  transform: scale(1.2);
+}
+
+/* Title Styling */
+.place-order-title {
+  font-size: 26px;
+  font-weight: bold;
+  color: #ff6f00;
+  text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
+  margin-bottom: 15px;  /* Reduced margin for compact layout */
+}
+
+/* Product Details */
+.place-order-details {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 15px;  /* Reduced spacing */
+  line-height: 1.6;
+}
+
+/* Quantity Input Section */
+.place-order-quantity-container {
+  text-align: left;
+  margin: 15px 0;       /* Reduced vertical margin */
+}
+.place-order-quantity-container label {
+  font-size: 16px;
+  color: #333;
+  display: block;
+  margin-bottom: 8px;
+}
+.place-order-quantity-container input[type="number"] {
+  width: 100px;
+  padding: 8px;
+  border: 2px solid #ff6f00;
+  border-radius: 8px;
+  font-size: 16px;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Type and Options Section */
+.place-order-types-container {
+  margin: 15px 0;       /* Reduced spacing */
+  text-align: left;
+}
+.place-order-types-container h3 {
+  font-size: 18px;
+  color: #ff6f00;
+  margin-bottom: 10px;
+}
+.place-order-options-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.place-order-options-list li {
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #333;
+}
+.place-order-options-list input[type="radio"] {
+  margin-right: 10px;
+}
+
+/* Cross Button */
+.place-order-cross-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+.place-order-cross-button:hover {
+  background: #ff4500;
+}
+
+/* Login Button */
+.place-order-login-button {
+  background: #ff6f00;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.place-order-login-button:hover {
+  background: #ff4500;
+}
+
+/* Order Type Buttons */
+.place-order-type-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin: 15px 0;       /* Reduced margin */
+}
+.place-order-type-button {
+  padding: 12px 20px;
+  border: 2px solid #ff6f00;
+  border-radius: 8px;
+  background: #fff;
+  color: #ff6f00;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.place-order-type-button:hover {
+  background: #ff6f00;
+  color: #fff;
+}
+
+/* Buttons Section */
+.place-order-modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;      /* Reduced margin */
+}
+.place-order-modal-buttons button {
+  width: 48%;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+/* Confirm Order Button */
+.place-order-button-ojgn {
+  background: #ff6f00; /* Vibrant blue */
+  color: white;
+  padding: 0.9rem 1.5rem; /* Spacious button */
+  border: none;
+  border-radius: 8px; /* Rounded corners */
+  font-size: 1rem; /* Comfortable text size */
+  font-weight: bold; /* Emphasized button text */
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.3s ease; /* Smooth interactions */
+}
+.place-order-button-ojgn :hover {
+  background: #ff4500;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+/* Cancel Button */
+.place-order-cancel-button {
+  background: #ddd;
+  color: #555;
+}
+.place-order-cancel-button:hover {
+  background: #bbb;
+}
+
+/* Error Popup Overlay */
+.error-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.error-container {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+.error-title {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  color: #e63946;
+}
+.error-message {
+  font-size: 1em;
+  margin-bottom: 20px;
+  color: #495057;
+}
+.retry-button {
+  background: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.retry-button:hover {
+  background: #0056b3;
+}
+.order-success-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* semi-transparent background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000; /* ensure it appears on top */
+}
+
+.order-success-container {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.order-success-close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.order-success-close-button:hover {
+ color: darkorange;
+}
+.order-success-title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.order-success-message {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: #666;
+}
+
+.popup-buttons-container {
+  display: flex; /* Aligns buttons horizontally */
+  gap: 15px; /* Adds uniform spacing between buttons */
+  justify-content: center; /* Centers buttons horizontally within the popup */
+  margin-top: 20px; /* Adds spacing above the buttons */
+}
+
+.go-to-orders-button {
+  background-color: orange;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.go-to-orders-button:hover {
+  background-color: darkorange;
+}
+
+.get-directions-button-seen {
+  background-color: darkred;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.get-directions-button-seen:hover {
+  background-color: darkblue;
+}

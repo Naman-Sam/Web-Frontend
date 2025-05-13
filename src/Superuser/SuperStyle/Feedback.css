@@ -1,0 +1,95 @@
+
+  
+  .feedback-header {
+    text-align: center;
+    background-color: #ff6f00; /* Orange theme */
+    color: white;
+    padding: 20px 10px;
+  }
+  
+  .feedback-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .feedback-header p {
+    font-size: 1.2rem;
+    margin: 0;
+  }
+  
+  /* Feedback Section */
+  .feedback-section {
+    padding: 30px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .feedback-item {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .feedback-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  }
+  
+  .feedback-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #ff6f00;
+  }
+  
+  .feedback-item .feedback-date {
+    font-size: 0.9rem;
+    color: #777;
+    margin-left: 10px;
+  }
+  
+  .feedback-item .feedback-message {
+    font-size: 1rem;
+    margin: 10px 0;
+    color: #555;
+  }
+  
+  .feedback-item .feedback-email {
+    font-size: 0.9rem;
+    color: #aaa;
+  }
+  
+  /* Error Message */
+  .error-message {
+    color: red;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  /* Loading State */
+  .feedback-section p {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #555;
+  }
+  
+  /* Footer */
+  .feedback-footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+  }
+  
+  .feedback-footer a {
+    color: #ff6f00;
+    text-decoration: none;
+  }
+  
+  .feedback-footer a:hover {
+    text-decoration: underline;
+  }
+  

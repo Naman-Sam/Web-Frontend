@@ -1,0 +1,350 @@
+/* Login and Signup Containers */
+.login-container, .signup-container {
+    display: flex;
+    justify-content: center; /* Center child elements horizontally */
+    align-items: center; /* Center child elements vertically */
+    position: absolute;
+    top: 50%; /* Center relative to viewport */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px; /* Add consistent padding */
+    background: white; /* Clean background */
+    border-radius: 15px; /* Rounded corners */
+    border: 1px solid #ddd; /* Subtle border */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Depth effect */
+    width: auto; /* Adjust dynamically based on child content */
+    height: auto; /* Adjust dynamically based on child content */
+    transition: all 0.3s ease; /* Smooth transitions for resizing */
+}
+
+/* Hover Effect */
+.login-container:hover {
+    background: orange; /* Change background color to orange on hover */
+    border-color: orange; /* Change border color to orange on hover */
+    box-shadow: 0 8px 20px rgba(255, 165, 0, 0.5); /* Add an orange glow for hover effect */
+}
+
+/* Hover Effect */
+.signup-container:hover {
+    background: orange; /* Change background color to orange on hover */
+    border-color: orange; /* Change border color to orange on hover */
+    box-shadow: 0 8px 20px rgba(255, 165, 0, 0.5); /* Add an orange glow for hover effect */
+}
+/* Login Form */
+.login-form {
+    width: 600px; /* Fixed width */
+    height: auto; /* Adjust dynamically */
+    padding: 2.5rem; /* Add spacing inside the form */
+    background: white; /* Match the container background */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    text-align: center; /* Center-align text */
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    gap: 1.5rem; /* Add space between elements */
+}
+
+/* Signup Form */
+.signup-form {
+    width: 700px; /* Larger width */
+    height: auto; /* Adjust dynamically based on content */
+    padding: 3rem; /* Add more spacing for signup */
+    background: white; /* Clean background */
+    border-radius: 15px; /* Matching rounded corners */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25); /* Slightly deeper shadow */
+    text-align: center;
+    display: flex;
+    flex-direction: column; /* Stack child elements */
+    gap: 1.5rem; /* Add space between elements */
+}
+
+/* Title Styling */
+.login-signup-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ff6f00; /* Blue for login titles */
+    margin-bottom: 1.5rem; /* Space below the title */
+}
+
+/* Input Fields */
+.login-signup-input {
+    width: 100%;
+    padding: 0.8rem; /* Inner padding for text */
+    border: 1px solid #ddd; /* Neutral border */
+    border-radius: 8px; /* Rounded corners */
+    font-size: 1rem; /* Comfortable text size */
+    background: #f9f9f9; /* Light gray background */
+    transition: all 0.3s ease; /* Smooth interactions */
+}
+
+.login-signup-input:focus {
+    border-color: #ff6f00; /* Highlight border on focus */
+    box-shadow: 0 0 5px orange (0, 123, 255, 0.5); /* Subtle glow effect */
+    outline: none; /* Remove default outline */
+}
+
+/* Password Container */
+.login-signup-password-container {
+    position: relative; /* Enable relative positioning for elements inside */
+}
+
+.login-signup-password-container input {
+    padding-right: 3rem; /* Add space for the toggle button */
+}
+
+.login-signup-password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #ff6f00; /* Blue for the toggle button */
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.login-signup-password-toggle:hover {
+    color: orange; /* Darker blue on hover */
+}
+
+/* Button Styling */
+.login-signup-button {
+    background: #ff6f00; /* Vibrant blue */
+    color: white;
+    padding: 0.9rem 1.5rem; /* Spacious button */
+    border: none;
+    border-radius: 8px; /* Rounded corners */
+    font-size: 1rem; /* Comfortable text size */
+    font-weight: bold; /* Emphasized button text */
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.3s ease; /* Smooth interactions */
+}
+
+.login-signup-button:hover {
+    background: orange; /* Darker blue on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Lift effect */
+    transform: translateY(-2px); /* Minor lift on hover */
+}
+
+.login-signup-button:disabled {
+    background: #d6d6d6; /* Gray for disabled state */
+    cursor: not-allowed; /* Show disabled cursor */
+}
+
+/* Helper Links */
+.login-signup-helper-links {
+    font-size: 0.9rem; /* Font size for links */
+    display: flex; /* Align links */
+    justify-content: space-between; /* Space links evenly */
+    flex-wrap: wrap; /* Wrap links for smaller screens */
+    margin-top: 1rem; /* Add space above links */
+}
+
+.login-signup-helper-links span {
+    color: #007bff; /* Contrasting blue links */
+    cursor: pointer; /* Pointer for interactivity */
+    transition: color 0.3s ease; /* Smooth hover effect */
+}
+
+.login-signup-helper-links span:hover {
+    color: #0056b3; /* Darker blue on hover */
+    text-decoration: underline; /* Optional underline */
+}
+
+/* Popup Overlay */
+.popup-overlay {
+    position: fixed; /* Ensure it covers the entire viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dimmed background */
+    display: flex;
+    justify-content: center; /* Center popup horizontally */
+    align-items: center; /* Center popup vertically */
+    z-index: 999; /* Ensure it appears above other elements */
+}
+
+/* Popup Box */
+.popup {
+    background: #fff; /* White background for contrast */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px; /* Internal spacing */
+    max-width: 400px; /* Max width for popup */
+    width: 90%; /* Make it responsive */
+    text-align: center; /* Center-align text */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+    animation: slide-down 0.3s ease; /* Subtle animation for appearance */
+}
+
+/* Animation for Popup */
+@keyframes slide-down {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Popup Message Text */
+.popup p {
+    font-size: 1rem;
+    color: #333; /* Neutral dark color */
+    margin-bottom: 20px; /* Space below the message */
+}
+
+/* Popup Button */
+.popup-button {
+    background: #ff6f00; /* Vibrant orange for attention */
+    color: white; /* White text for contrast */
+    padding: 10px 20px; /* Button size */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded button */
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Smooth hover effects */
+}
+
+.popup-button:hover {
+    background: orange; /* Lighter shade on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle lift */
+    transform: translateY(-2px); /* Slight animation */
+}
+
+/* Close Button */
+.popup-close {
+    background: #ddd; /* Neutral color for close button */
+    color: #333; /* Dark text color */
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    margin-left: 10px; /* Add spacing between buttons */
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.popup-close:hover {
+    background: #bbb; /* Darker shade on hover */
+    color: white; /* White text on hover */
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+
+/* Superuser button container */
+.superuser-btn-container {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    z-index: 9999; /* Ensure it appears above other elements */
+  }
+  
+  /* Superuser toggle button */
+  .superuser-toggle-btn {
+    padding: 10px 20px;
+    background-color: #ff4d4f; /* Eye-catching red background */
+    color: #fff; /* White text for good contrast */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    transition: all 0.3s ease; /* Smooth hover effect */
+  }
+  
+  /* Hover effect for the button */
+  .superuser-toggle-btn:hover {
+    background-color: #e04344; /* Slightly darker red */
+    transform: scale(1.05); /* Slight enlargement */
+  }
+  
+  /* Active or focused effect */
+  .superuser-toggle-btn:active,
+  .superuser-toggle-btn:focus {
+    outline: none;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4); /* Stronger shadow on click */
+  }
+  /* Mobile Warning Modal Styles */
+.mobile-warning-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 0, 0, 0.5); /* Red transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5000;
+  }
+  
+  .mobile-warning-content {
+    background-color: #ffe6e6;
+    border: 2px solid red;
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+  }
+  
+  .warning-icon {
+    font-size: 3em;
+    color: red;
+    margin-bottom: 10px;
+  }
+  
+  .mobile-warning-content h2 {
+    margin: 10px 0;
+    color: red;
+  }
+  
+  .mobile-warning-content p {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    color: #330000;
+  }
+  
+  .mobile-warning-buttons button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+  }
+  
+  .go-back-button {
+    background-color: red;
+    color: white;
+  }
+  
+  .continue-anyway-button {
+    background-color: darkgreen;
+    color: white;
+  }
+  .redirect-note-for-me{
+    color: #ff0000;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+
+  .redirect-note-for-me-click{
+    color: #0066ff;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+
+  .redirect-note-for-me-click:hover{
+    color: #2205ff;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }

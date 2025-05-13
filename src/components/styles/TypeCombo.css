@@ -1,0 +1,91 @@
+/* TypeCombo Styles */
+.type-combo-component-container {
+    padding: 16px;
+    background-color: #fafafa;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+
+.type-combo-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    color: #333;
+}
+
+.type-combo-loading-message,
+.type-combo-error-message {
+    color: #ff4d4f;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.type-combo-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.type-combo-card {
+    border: 1px solid #e0e0e0;
+    padding: 12px;
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.type-combo-card-title {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.type-combo-selection {
+    margin-top: 16px;
+}
+
+.type-combo-selection-title {
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #444;
+}
+
+.type-combo-selection-button {
+    display: inline-block;
+    margin: 4px;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.type-combo-selection-button:hover {
+    background-color: #ddd;
+}
+
+.type-combo-selected {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+.type-combo-price-display {
+    margin-top: 16px;
+}
+
+.type-combo-price-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #222;
+}
+
+.type-combo-price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #4caf50;
+}
+
+.type-combo-price-message {
+    font-size: 14px;
+    color: #888;
+}

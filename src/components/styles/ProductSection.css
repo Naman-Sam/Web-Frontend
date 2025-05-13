@@ -1,0 +1,40 @@
+/* Products Section */
+.products-section {
+    padding: 40px 20px; /* Add spacing within the section */
+    text-align: center; /* Center-align text */
+    background-color: #fff; /* Clean white background */
+    margin: 0 auto; /* Center the section horizontally */
+  }
+  
+  /* Section Title */
+  .products-section .section-title {
+    font-size: 28px; /* Larger font for emphasis */
+    color: orange; /* Highlight the title */
+    margin-bottom: 30px; /* Space below the title */
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  
+
+  /* Decorative Underline */
+  .products-section .section-title::after {
+    content: '';
+    display: block;
+    margin: 0 auto;
+    width: 100px; /* Width of the underline */
+    height: 4px; /* Thickness of the underline */
+    background-color: orange; /* Matches the title color */
+    border-radius: 2px; /* Smooth rounded edges */
+    margin-top: 10px; /* Space between the title and underline */
+  }
+  
+  /* Products Grid */
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    grid-auto-rows: auto; /* Dynamic row height based on content */
+    gap: 20px; /* Space between items */
+    margin: 20px auto; /* Center-align the grid */
+    max-width: 1200px; /* Width limit for better alignment */
+  }

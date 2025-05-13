@@ -1,0 +1,108 @@
+
+  /* Tablet Screens */
+  @media (max-width: 768px) {
+    .menu-container-yets {
+      width: 50%;
+      left: -50%;  /* Adjust hidden position based on new width */
+      padding: 15px;
+    }
+    
+    .close-button-bets {
+      font-size: 20px;
+    }
+    
+    .menu-items-yets a {
+      font-size: 20px;
+    }
+    
+    .login-container-make {
+      margin: 10px 0;
+      padding: 8px;
+    }
+    
+    .login-link {
+      font-size: 20px;
+    }
+    
+    .login-arrow {
+      font-size: 16px;
+    }
+    
+    .login-profile {
+      font-size: 35px;
+      margin-right: 10px;
+    }
+  }
+  
+  /* Mobile Screens */
+  @media (max-width: 480px) {
+    .menu-container-yets {
+      width: 80%;
+      left: -80%;  /* Hide off-screen based on 80% width */
+      padding: 10px;
+    }
+    
+    .close-button-bets {
+      font-size: 18px;
+    }
+    
+    .menu-items-yets a {
+      font-size: 18px;
+    }
+    
+    .login-container-make {
+      margin: 8px 0;
+      padding: 6px;
+    }
+    
+    .login-link {
+      font-size: 16px;
+    }
+    
+    .login-arrow {
+      font-size: 16px;
+    }
+    
+    .login-profile {
+      font-size: 30px;
+      margin-right: 8px;
+    }
+  }
+  @media only screen and (min-width: 768px) and (max-width: 1024px) {
+    /* Adjust the Menu Container for iPad Pro */
+    .menu-container-yets {
+      width: 40%;           /* Increase width to 40% of the screen */
+      left: -40%;           /* Update hidden position accordingly */
+      padding: 18px;        /* Slightly larger padding for better spacing */
+    }
+    
+    /* Adjust the Close Button */
+    .close-button-bets {
+      font-size: 22px;      /* Moderately sized close icon */
+    }
+    
+    /* Adjust Menu Items */
+    .menu-items-yets a {
+      font-size: 22px;      /* Slightly smaller than your default 24px for a balanced look */
+    }
+    
+    /* Adjust Login Section */
+    .login-container-make {
+      margin: 12px 0;       /* Reduce margins slightly */
+      padding: 10px;        /* Increase padding slightly for more touch area */
+    }
+    
+    .login-link {
+      font-size: 22px;      /* Adjust login text size */
+    }
+    
+    .login-arrow {
+      font-size: 20px;      /* Slightly larger arrow icon for clarity */
+    }
+    
+    .login-profile {
+      font-size: 38px;      /* Slightly reduced profile icon size compared to default */
+      margin-right: 12px;   /* Adjust spacing between the icon and login text */
+    }
+  }
+  

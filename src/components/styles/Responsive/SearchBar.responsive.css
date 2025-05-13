@@ -1,0 +1,45 @@
+/* Responsive Search Bar */
+@media (max-width: 768px) {
+    .search-bar {
+      padding: 8px; /* Slightly reduce padding */
+      gap: 8px; /* Adjust gap between elements */
+    }
+  
+    .search-bar input {
+      width: 50%; /* Make input narrower */
+      padding: 8px; /* Reduce padding */
+      font-size: 14px; /* Slightly smaller text */
+    }
+  
+    .search-bar button {
+      padding: 8px 16px; /* Reduce button size */
+      font-size: 14px; /* Smaller button text */
+    }
+  
+    .filter-btn {
+      font-size: 18px; /* Adjust icon size */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .search-bar {
+      padding: 6px; /* Compact padding for mobile */
+      gap: 6px; /* Reduce spacing */
+    }
+  
+    .search-bar input {
+      width: 50%; /* Maintain layout proportions */
+      padding: 6px; /* Smaller padding for mobile */
+      font-size: 12px; /* Compact font size */
+    }
+  
+    .search-bar button {
+      padding: 6px 12px; /* Compact button size */
+      font-size: 12px; /* Smaller button text */
+    }
+  
+    .filter-btn {
+      font-size: 16px; /* Compact icon size for mobile */
+    }
+  }
+  
