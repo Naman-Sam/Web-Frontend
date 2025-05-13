@@ -373,7 +373,7 @@ const ProductPage = ({ BASE_URL, userId }) => {
                       ₹{product?.price.toFixed(2)}
                     </span>
                     <span className="right-discounted-price">
-                      ₹{(product?.price - product?.discount_amount).toFixed(2)}
+                      ₹{(product?.price + product?.discount_amount).toFixed(2)}
                     </span>
                   </>
                 ) : (
