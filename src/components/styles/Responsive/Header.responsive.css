@@ -63,18 +63,18 @@
   
     .logo img {
       position: absolute;
-      left: 50%;
+      left: 47%;
       transform: translateX(-50%);
-      width: 130px; /* Smaller size for mobile */
+      width: 163px; /* Smaller size for mobile */
       max-width: 100%; /* Prevent scaling issues */
       height: auto; /* Maintain aspect ratio */
     }
 
     .logo-super img {
         position: absolute;
-        left: 50%;
+        left: 47%;
         transform: translateX(-50%);
-        width: 130px; /* Smaller size for mobile */
+        width: 163px; /* Smaller size for mobile */
         max-width: 100%; /* Prevent scaling issues */
         height: auto; /* Maintain aspect ratio */
       }

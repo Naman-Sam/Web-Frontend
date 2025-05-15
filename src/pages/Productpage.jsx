@@ -478,7 +478,7 @@ const ProductPage = ({ BASE_URL, userId }) => {
                   </div>
                   {comboPrice !== null && (
                     <div className="type-combo-price-display">
-                      <h3>Combo Price:</h3>
+                      <h3>Price:</h3>
                       <p>₹{comboPrice.toFixed(2)}</p>
                     </div>
                   )}
