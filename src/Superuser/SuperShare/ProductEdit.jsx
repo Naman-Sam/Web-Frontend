@@ -162,13 +162,15 @@ const ProductEdit = ({ BASE_URL }) => {
   };
 
   // --- Image Handlers ---
-  const handleImageUpload = (e) => {
+   const handleImageUpload = (e) => {
     const files = Array.from(e.target.files);
     if (files.length + imagePreviews.length > 10) {
       showNotification('You can only upload up to 10 images.', 'error');
       return;
     }
-    setUploadedImages((prev) => [...prev, ...files]);
+    // Wrap each file in an object with cropped: false
+    const newImages = files.map((file) => ({ file, cropped: false }));
+    setUploadedImages((prev) => [...prev, ...newImages]);
     files.forEach((file) => {
       const previewUrl = URL.createObjectURL(file);
       setImagePreviews((prev) => [...prev, previewUrl]);
@@ -189,10 +191,10 @@ const ProductEdit = ({ BASE_URL }) => {
     setCropModalInfo({ visible: false, imageIndex: null, imageUrl: '' });
   };
 
-  const handleCropSave = (croppedFile, croppedImageUrl) => {
+const handleCropSave = (croppedFile, croppedImageUrl) => {
     setUploadedImages((prev) => {
       const newImages = [...prev];
-      newImages[cropModalInfo.imageIndex] = croppedFile;
+      newImages[cropModalInfo.imageIndex] = { file: croppedFile, cropped: true };
       return newImages;
     });
     setImagePreviews((prev) => {
@@ -210,6 +212,36 @@ const ProductEdit = ({ BASE_URL }) => {
     return new File([blob], filename, { type: mimeType });
   };
 
+    // --- Auto Crop Helper ---  
+  // This function auto crops the image to a centered square.
+  const autoCropImage = (imageUrl) => {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.crossOrigin = "Anonymous";
+    img.onload = () => {
+      const squareSize = Math.min(img.width, img.height);
+      const offsetX = (img.width - squareSize) / 2;
+      const offsetY = (img.height - squareSize) / 2;
+      const canvas = document.createElement('canvas');
+      canvas.width = squareSize;
+      canvas.height = squareSize;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, offsetX, offsetY, squareSize, squareSize, 0, 0, squareSize, squareSize);
+      canvas.toBlob((blob) => {
+        if (blob) {
+          // Use the built-in File constructor here.
+          const autoCroppedFile = new File([blob], "auto_cropped_image.png", { type: blob.type });
+          resolve({ file: autoCroppedFile });
+        } else {
+          reject(new Error("Failed to auto crop image."));
+        }
+      }, 'image/png');
+    };
+    img.onerror = () => reject(new Error("Failed to load image for autocrop."));
+    img.src = imageUrl;
+  });
+};
+
   const handlehowtoeditClick = () => {
     navigate(`/edit-article`);
   };
@@ -219,44 +251,74 @@ const ProductEdit = ({ BASE_URL }) => {
   };
 
   // --- Save Images Handler ---
+  // Before saving, for every image that wasn’t manually cropped we perform an auto crop.
   const handleImagesSave = async () => {
-    const formData = new FormData();
-    formData.append('user_id', userId);
-    formData.append('product_id', productId);
+  const formData = new FormData();
+  formData.append('user_id', userId);
+  formData.append('product_id', productId);
 
-    // Convert any URL image to File objects if necessary.
-    const imagesToUpload = await Promise.all(
-      uploadedImages.map(async (img, index) => {
-        if (typeof img === 'string') {
+  // Process every image – if it's an object that hasn't been marked as cropped,
+  // use autoCropImage on its preview URL. Otherwise, if it's a URL string from the server,
+  // convert it to a File.
+  const imagesToUpload = await Promise.all(
+    uploadedImages.map(async (img, index) => {
+      if (img && typeof img === 'object' && 'cropped' in img) {
+        // For images picked up locally (file objects) with a manual cropping flag
+        if (!img.cropped) {
+          // Not manually cropped: attempt auto-cropping using the preview url
+          const previewUrl = imagePreviews[index];
+          try {
+            // autoCropImage returns an object { file: autoCroppedFile }
+            const { file: autoCroppedFile } = await autoCropImage(previewUrl);
+            return autoCroppedFile;
+          } catch (error) {
+            console.error("Autocropping failed for image index", index, error);
+            // Fallback to the original file if auto-cropping fails
+            return img.file;
+          }
+        }
+        // If the image was already cropped manually, just return its file object.
+        return img.file;
+      } else if (typeof img === 'string') {
+        // When images come from the server as URLs, you can convert them to file objects
+        try {
           return await urlToFile(img, `image_${index}.jpg`, 'image/jpeg');
+        } catch (err) {
+          console.error("Conversion from URL to File failed for image index", index, err);
+          throw err;
         }
-        return img;
-      })
-    );
-
-    // Append every image with the key "images"
-    imagesToUpload.forEach((file) => {
-      formData.append('images', file);
-    });
-
-    wrapperFetch(`${BASE_URL}/api/products/update`, {
-      method: 'PUT',
-      body: formData,
+      }
+      // If none of the above match, you may want to simply return null or handle accordingly.
+      return null;
     })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.message) {
-          showNotification(data.message, 'success');
-          setImagesEditMode(false);
-        } else {
-          throw new Error('Failed to update images');
-        }
-      })
-      .catch((err) => {
-        console.error(err);
-        showNotification(err.message, 'error');
-      });
-  };
+  );
+
+  // Append every valid file to the FormData payload.
+  imagesToUpload.forEach((file) => {
+    if (file) {
+      formData.append('images', file);
+    }
+  });
+
+  // Submit the formData.
+  wrapperFetch(`${BASE_URL}/api/products/update`, {
+    method: 'PUT',
+    body: formData,
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.message) {
+        showNotification(data.message, 'success');
+        setImagesEditMode(false);
+      } else {
+        throw new Error('Failed to update images');
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      showNotification(err.message, 'error');
+    });
+};
 
   const handleImagesCancel = () => {
     if (product && product.images) {

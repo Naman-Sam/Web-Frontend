@@ -476,18 +476,22 @@ const SuperProductPage = ({ BASE_URL }) => {
   };
 
   //----------------- IMAGE HANDLERS -----------------
-  const handleImageUpload = (e) => {
-    const files = Array.from(e.target.files);
-    if (files.length + uploadedImages.length > 10) {
-      showNotification('You can only upload upto 10 images.', 'error');
-      return;
-    }
-    setUploadedImages((prev) => [...prev, ...files]);
-    files.forEach((file) => {
-      const previewUrl = URL.createObjectURL(file);
-      setImagePreviews((prev) => [...prev, previewUrl]);
-    });
-  };
+ const handleImageUpload = (e) => {
+  const files = Array.from(e.target.files);
+  if (files.length + uploadedImages.length > 10) {
+    showNotification('You can only upload up to 10 images.', 'error');
+    return;
+  }
+  // Store each file with a flag for cropping status
+  const newFiles = files.map(file => ({ file, cropped: false }));
+  setUploadedImages(prev => [...prev, ...newFiles]);
+
+  // Also update image previews if you are keeping them separately.
+  files.forEach((file) => {
+    const previewUrl = URL.createObjectURL(file);
+    setImagePreviews(prev => [...prev, previewUrl]);
+  });
+};
 
   const handleImageContextMenu = (e, index) => {
     e.preventDefault();
@@ -518,31 +522,101 @@ const SuperProductPage = ({ BASE_URL }) => {
     setCropModalInfo({ visible: false, imageIndex: null, imageUrl: '' });
   };
 
-  const handleCropSave = (croppedFile, croppedImageUrl) => {
-    setUploadedImages((prev) => {
-      const newImages = [...prev];
-      newImages[cropModalInfo.imageIndex] = croppedFile;
-      return newImages;
-    });
-    setImagePreviews((prev) => {
-      const newPreviews = [...prev];
-      newPreviews[cropModalInfo.imageIndex] = croppedImageUrl;
-      return newPreviews;
-    });
-    setCropModalInfo({ visible: false, imageIndex: null, imageUrl: '' });
-  };
+const handleCropSave = (croppedFile, croppedImageUrl) => {
+  setUploadedImages((prev) => {
+    const newImages = [...prev];
+    newImages[cropModalInfo.imageIndex] = { file: croppedFile, cropped: true };
+    return newImages;
+  });
+  setImagePreviews((prev) => {
+    const newPreviews = [...prev];
+    newPreviews[cropModalInfo.imageIndex] = croppedImageUrl;
+    return newPreviews;
+  });
+  setCropModalInfo({ visible: false, imageIndex: null, imageUrl: '' });
+};
+
+const autoCropImage = (imageUrl) => {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+
+    // When dealing with blob URLs from URL.createObjectURL,
+    // crossOrigin may not be necessary. You can safely check:
+    if (!imageUrl.startsWith("blob:")) {
+      img.crossOrigin = "Anonymous";
+    }
+
+    img.onload = () => {
+      const squareSize = Math.min(img.width, img.height);
+      const offsetX = (img.width - squareSize) / 2;
+      const offsetY = (img.height - squareSize) / 2;
+      
+      const canvas = document.createElement('canvas');
+      canvas.width = squareSize;
+      canvas.height = squareSize;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(
+        img,
+        offsetX,
+        offsetY,
+        squareSize,
+        squareSize,
+        0,
+        0,
+        squareSize,
+        squareSize
+      );
+      
+      canvas.toBlob((blob) => {
+        if (blob) {
+          // Create a new File from blob; you can choose an appropriate filename.
+          const croppedFile = new File([blob], "cropped.png", { type: "image/png" });
+          resolve({ file: croppedFile });
+        } else {
+          reject(new Error("Failed to crop image."));
+        }
+      }, "image/png");
+    };
+
+    img.onerror = () => reject(new Error("Error loading image for auto crop."));
+    img.src = imageUrl;
+  });
+};
 
   //----------------- SUBMIT HANDLER -----------------
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!title || !description || !price || !stockQuantity) {
-      showNotification('Please fill out all required product details.', 'error');
-      return;
-    }
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+  if (!title || !description || !price || !stockQuantity) {
+    showNotification('Please fill out all required product details.', 'error');
+    return;
+  }
+
+  try {
+    // Process images: for each uploaded image not cropped manually, run autoCropImage.
+    const processedImages = await Promise.all(
+      uploadedImages.map(async (imgObj, index) => {
+        if (!imgObj.cropped) {
+          const previewUrl = imagePreviews[index];
+          console.log(`Auto cropping image index ${index} with URL: `, previewUrl);
+          try {
+            const { file: autoCroppedFile } = await autoCropImage(previewUrl);
+            console.log(`Image index ${index} auto-cropped successfully.`);
+            return autoCroppedFile;
+          } catch (error) {
+            console.error("Auto cropping failed on image index", index, error);
+            // Fallback to the original file if auto cropping fails.
+            return imgObj.file;
+          }
+        } else {
+          return imgObj.file;
+        }
+      })
+    );
+    
+    // Create FormData and append other fields.
     const formData = new FormData();
     formData.append('title', title);
     formData.append('description', description);
-    // Use price (final price) instead of initial_price
     formData.append('initial_price', price);
     formData.append('is_discounted', isDiscounted);
     if (isDiscounted) {
@@ -550,10 +624,8 @@ const SuperProductPage = ({ BASE_URL }) => {
     }
     formData.append('stock_quantity', stockQuantity);
     formData.append('user_id', userId);
-
-    selectedCategories.forEach((cat) =>
-      formData.append('category_ids[]', cat.id)
-    );
+    
+    selectedCategories.forEach((cat) => formData.append('category_ids[]', cat.id));
     Object.keys(selectedOptions).forEach((typeId) =>
       formData.append('type_ids[]', typeId)
     );
@@ -562,52 +634,38 @@ const SuperProductPage = ({ BASE_URL }) => {
         formData.append('option_ids[]', option.id)
       )
     );
-    uploadedImages.forEach((file) => formData.append('images', file));
-
-    try {
-      const response = await wrapperFetch(`${BASE_URL}/api/products/add`, {
-        method: 'POST',
-        body: formData,
-      });
-      const data = await response.json();
-      if (response.ok) {
-        showNotification('Product added successfully!', 'success');
-        navigate('/superdashboard');
-        const productId = data.product.id;
-        for (let combo of typeCombos) {
-          if (combo.comboPrice) {
-            await wrapperFetch(`${BASE_URL}/api/type-combo/add`, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                product_id: productId,
-                options: combo.options.map((op) => op.id),
-                combo_price: parseFloat(combo.comboPrice),
-                user_id: userId,
-              }),
-            });
-          }
-        }
-        // Reset form state
-        setTitle('');
-        setDescription('');
-        setPrice('');
-        setIsDiscounted(false);
-        setDiscountAmount('');
-        setStockQuantity('');
-        setUploadedImages([]);
-        setImagePreviews([]);
-        setSelectedCategories([]);
-        setSelectedOptions({});
-        setTypeCombos([]);
-      } else {
-        throw new Error(data.message || 'Failed to add product.');
-      }
-    } catch (err) {
-      showNotification(err.message, 'error');
-      console.error(err);
+    
+    // Append the processed images.
+    processedImages.forEach((file) => formData.append('images', file));
+    
+    const response = await wrapperFetch(`${BASE_URL}/api/products/add`, {
+      method: 'POST',
+      body: formData,
+    });
+    const data = await response.json();
+    if (response.ok) {
+      showNotification('Product added successfully!', 'success');
+      navigate('/superdashboard');
+      // Reset form state.
+      setTitle('');
+      setDescription('');
+      setPrice('');
+      setIsDiscounted(false);
+      setDiscountAmount('');
+      setStockQuantity('');
+      setUploadedImages([]);
+      setImagePreviews([]);
+      setSelectedCategories([]);
+      setSelectedOptions({});
+      setTypeCombos([]);
+    } else {
+      throw new Error(data.message || 'Failed to add product.');
     }
-  };
+  } catch (err) {
+    showNotification(err.message, 'error');
+    console.error(err);
+  }
+};
 
   //----------------- RENDER -----------------
   return (
