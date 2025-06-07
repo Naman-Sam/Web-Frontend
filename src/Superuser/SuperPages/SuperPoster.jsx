@@ -357,12 +357,6 @@ const SuperPoster = ({ BASE_URL }) => {
           >
             Delete Poster
           </li>
-          <li
-            style={{ cursor: 'pointer', padding: '5px' }}
-            onClick={() => handleCropActionEdit(contextMenu.poster)}
-          >
-            Crop Poster
-          </li>
         </ul>
       )}
 
