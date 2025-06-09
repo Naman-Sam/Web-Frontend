@@ -15,7 +15,6 @@ const SuperProductPage = ({ BASE_URL }) => {
   // General product details
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  // NOTE: Use "price" rather than "initialPrice" as backend calculates the original automatically.
   const [price, setPrice] = useState('');
   const [isDiscounted, setIsDiscounted] = useState(false);
   const [discountAmount, setDiscountAmount] = useState('');
@@ -88,6 +87,9 @@ const SuperProductPage = ({ BASE_URL }) => {
     imageIndex: null,
     imageUrl: '',
   });
+
+  // NEW: State for loading indicator on submit button
+  const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
   const { showNotification } = useNotification();
@@ -306,80 +308,86 @@ const SuperProductPage = ({ BASE_URL }) => {
     setContextMenu({ ...contextMenu, visible: false });
   };
 
-  const handleEditSave = () => {
-    if (editModal.type === 'category') {
-      wrapperFetch(`${BASE_URL}/api/categories/edit`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          id: editModal.data.id,
-          name: editModal.input,
-          user_id: userId,
-        }),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          showNotification(data.message, 'success');
-          setAllCategories(
-            allCategories.map((cat) =>
-              cat.id === editModal.data.id ? data.category : cat
-            )
-          );
-          setSelectedCategories(
-            selectedCategories.map((cat) =>
-              cat.id === editModal.data.id ? data.category : cat
-            )
-          );
-          setEditModal({ visible: false, type: '', data: null, parentId: null, input: '' });
-        })
-        .catch((err) => {
-          console.error(err);
-          showNotification('Error editing category', 'error');
-        });
-    } else if (editModal.type === 'option') {
-      wrapperFetch(`${BASE_URL}/api/type/option/edit`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          type_id: editModal.parentId,
-          add_options: [editModal.input],
-          remove_option_ids: [editModal.data.id],
-          user_id: userId,
-        }),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          showNotification(data.message, 'success');
-          // Force refresh options cache for this type.
-          fetchOptionsByType(editModal.parentId, true);
-          setEditModal({ visible: false, type: '', data: null, parentId: null, input: '' });
-        })
-        .catch((err) => {
-          console.error(err);
-          showNotification('Error editing option', 'error');
-        });
-    } else if (editModal.type === 'type') {
-      wrapperFetch(`${BASE_URL}/api/type/edit`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          type_id: editModal.data.id,
-          type_name: editModal.input,
-          user_id: userId,
-        }),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          showNotification(data.message, 'success');
-          setTypes(types.map((t) => (t.id === editModal.data.id ? data.type : t)));
-          setEditModal({ visible: false, type: '', data: null, parentId: null, input: '' });
-        })
-        .catch((err) => {
-          console.error(err);
-          showNotification('Error editing type', 'error');
-        });
+  const handleEditSave = async () => {
+    if (!editModal.input.trim()) {
+        showNotification('Input cannot be empty.', 'error');
+        return;
     }
-  };
+
+    let endpoint = '';
+    let method = '';
+    let body = {};
+    let successMessage = '';
+    let errorMessage = '';
+    let updateStateFunction = null; // Function to update the main state
+
+    try {
+        switch (editModal.type) {
+            case 'category':
+                endpoint = `${BASE_URL}/api/categories/edit`;
+                method = 'PUT'; // Assuming PUT for full replacement of category details
+                body = { id: editModal.data.id, name: editModal.input, user_id: userId };
+                successMessage = 'Category updated successfully!';
+                errorMessage = 'Error editing category.';
+                updateStateFunction = (updatedCategory) => {
+                    setAllCategories(allCategories.map(cat => cat.id === updatedCategory.id ? updatedCategory : cat));
+                    setSelectedCategories(selectedCategories.map(cat => cat.id === updatedCategory.id ? updatedCategory : cat));
+                };
+                break;
+            case 'option':
+                // This API seems to delete and re-add for edit. Confirm backend intent.
+                // If it's a rename, backend should ideally have an endpoint like /api/type/option/rename/{id}
+                endpoint = `${BASE_URL}/api/type/option/edit`;
+                method = 'PATCH'; // Use PATCH for partial update (adding/removing options)
+                body = {
+                    type_id: editModal.parentId,
+                    add_options: [editModal.input],
+                    remove_option_ids: [editModal.data.id],
+                    user_id: userId,
+                };
+                successMessage = 'Option updated successfully!';
+                errorMessage = 'Error editing option.';
+                updateStateFunction = () => fetchOptionsByType(editModal.parentId, true); // Force refresh
+                break;
+            case 'type':
+                endpoint = `${BASE_URL}/api/type/edit`;
+                method = 'PATCH'; // Use PATCH for partial update (type name change)
+                body = { type_id: editModal.data.id, type_name: editModal.input, user_id: userId };
+                successMessage = 'Type updated successfully!';
+                errorMessage = 'Error editing type.';
+                updateStateFunction = (updatedType) => {
+                    setTypes(types.map(t => t.id === updatedType.id ? updatedType : t));
+                };
+                break;
+            default:
+                showNotification('Unknown edit type.', 'error');
+                return;
+        }
+
+        const response = await wrapperFetch(endpoint, {
+            method: method,
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(body),
+        });
+        const data = await response.json();
+
+        if (response.ok) {
+            showNotification(successMessage, 'success');
+            if (updateStateFunction) {
+                // Pass the relevant data from the response if available (e.g., data.category, data.type)
+                // Assuming data.category or data.type exists in response for category/type edits
+                updateStateFunction(data.category || data.type || null);
+            }
+            setEditModal({ visible: false, type: '', data: null, parentId: null, input: '' });
+        } else {
+            throw new Error(data.message || errorMessage);
+        }
+    } catch (err) {
+        showNotification(err.message, 'error');
+        console.error(`Error in handleEditSave for ${editModal.type}:`, err);
+    }
+};
+
 
   const handlehowtoeditClick = () => {
     navigate(`/add-article`);
@@ -586,10 +594,14 @@ const autoCropImage = (imageUrl) => {
   //----------------- SUBMIT HANDLER -----------------
  const handleSubmit = async (e) => {
   e.preventDefault();
+  if (isLoading) return; // Prevent multiple submissions
+
   if (!title || !description || !price || !stockQuantity) {
     showNotification('Please fill out all required product details.', 'error');
     return;
   }
+
+  setIsLoading(true); // Set loading to true when submission starts
 
   try {
     // Process images: for each uploaded image not cropped manually, run autoCropImage.
@@ -664,6 +676,8 @@ const autoCropImage = (imageUrl) => {
   } catch (err) {
     showNotification(err.message, 'error');
     console.error(err);
+  } finally {
+    setIsLoading(false); // Always set loading to false after completion or error
   }
 };
 
@@ -914,7 +928,10 @@ const autoCropImage = (imageUrl) => {
             ))}
           </div>
         </section>
-        <button type="submit">Add Product</button>
+        {/* Submit Button - Modified for loading state */}
+        <button type="submit" disabled={isLoading}>
+          {isLoading ? 'Adding Product...' : 'Add Product'}
+        </button>
       </form>
       {/* Custom Context Menu for Categories/Types/Options */}
       {contextMenu.visible && (
