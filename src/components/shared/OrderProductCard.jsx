@@ -6,18 +6,20 @@ import { io } from 'socket.io-client';
 import { wrapperFetch } from '../../utils/wrapperfetch';
 
 const SOCKET_URL = process.env.REACT_APP_SOCKET_URL;
+const BASE_URL = process.env.REACT_APP_BASE_URL; // Ensure BASE_URL is accessible
 
 const OrderProductCard = ({
   order: initialOrder,
   onCancel,
   onSelect,
-  // New optional callback for order updates (status changes coming through socket)
   onOrderUpdate = () => {}
 }) => {
   const [order, setOrder] = useState(initialOrder);
   const [expanded, setExpanded] = useState(false);
   const [selectedItems, setSelectedItems] = useState([]);
   const [showCancelModal, setShowCancelModal] = useState(false);
+  const [showReturnModal, setShowReturnModal] = useState(false); // New state for return modal
+  const [returnReason, setReturnReason] = useState(''); // New state for return reason
   const { showNotification } = useNotification();
 
   // Destructure order details (using the parent's order id field name "id")
@@ -27,7 +29,7 @@ const OrderProductCard = ({
   const shopLocation = {
     address: 'Seema Enterprises, 20, New Bazar, Kurukshetra, Thanesar, Haryana 136118, India',
     googleMapsLink:
-      'https://maps.app.goo.gl/PiLLRDkUXKWk4WrF7',
+      'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent('Seema Enterprises, 20, New Bazar, Kurukshetra, Thanesar, Haryana 136118, India'),
   };
 
   // Format the order date
@@ -40,8 +42,11 @@ const OrderProductCard = ({
     status.toLowerCase() !== 'completed' &&
     status.toLowerCase() !== 'readyforpickup' &&
     status.toLowerCase() !== 'cancelled' &&
-    status.toLowerCase() !== 'delivered' &&
+    status.toLowerCase() !== 'delivered' && // Orders already delivered should not be cancelled
     status.toLowerCase() !== 'sent';
+
+  // Allow return only if status is 'delivered'. You might add a time limit here as well.
+  const canReturn = status.toLowerCase() === 'delivered';
 
   // Toggle expansion of order details. Call onSelect (from parent) when expanding.
   const toggleExpand = () => {
@@ -70,6 +75,11 @@ const OrderProductCard = ({
       }
     });
 
+    socketRef.current.on('connect_error', (error) => {
+      console.error('Socket connection error:', error);
+      showNotification('Failed to connect to real-time updates.', 'error');
+    });
+
     return () => {
       socketRef.current.disconnect();
     };
@@ -89,7 +99,7 @@ const OrderProductCard = ({
   const openCancelModal = (e) => {
     e.stopPropagation();
     if (!canCancel) {
-      showNotification('Cannot cancel completed orders or orders ready for pickup', 'error');
+      showNotification('This order cannot be cancelled at its current status.', 'error');
       return;
     }
     setSelectedItems([]);
@@ -105,11 +115,15 @@ const OrderProductCard = ({
   // Submit cancellation request.
   const submitCancelRequest = async () => {
     if (selectedItems.length === 0) {
-      showNotification('Please select at least one item to cancel', 'warning');
+      showNotification('Please select at least one item to cancel.', 'warning');
       return;
     }
     try {
       const userId = localStorage.getItem('userId');
+      if (!userId) {
+        showNotification('User ID not found. Please log in.', 'error');
+        return;
+      }
       const cancelItems = selectedItems.map((productId) => ({ product_id: productId }));
       console.log('Submitting cancel request with:', orderId, userId, cancelItems);
       await onCancel(orderId, userId, cancelItems);
@@ -117,9 +131,71 @@ const OrderProductCard = ({
       closeCancelModal();
     } catch (error) {
       console.error('Error cancelling items:', error);
-      showNotification('An error occurred while cancelling items', 'error');
+      showNotification('An error occurred while cancelling items.', 'error');
     }
   };
+
+  // Open Return Modal
+  const openReturnModal = (e) => {
+    e.stopPropagation(); // Prevent card expansion
+    if (!canReturn) {
+      showNotification('This order cannot be returned at its current status.', 'error');
+      return;
+    }
+    setReturnReason(''); // Clear previous reason
+    setShowReturnModal(true);
+  };
+
+  // Close Return Modal
+  const closeReturnModal = () => {
+    setShowReturnModal(false);
+    setReturnReason('');
+  };
+
+  // Submit Return Request (sends a message)
+  const handleSubmitReturnRequest = async () => {
+    if (!returnReason.trim()) {
+      showNotification('Please provide a reason for the return.', 'warning');
+      return;
+    }
+
+    const userId = localStorage.getItem('userId');
+    if (!userId) {
+      showNotification('User ID not found. Please log in.', 'error');
+      return;
+    }
+
+    const professionalMessage = `Return Request for Order #${orderId}:\n\nReason: ${returnReason}\n\nUser is requesting a return for this order. Please assist further.`;
+
+    const formData = new FormData();
+    formData.append('orderId', orderId); // Use orderId as conversation_id or orderId
+    formData.append('sender_id', userId);
+    formData.append('message', professionalMessage);
+    // You can optionally add an image if the user uploads one, or a default "return" image.
+    // For now, we'll send without an image, but the endpoint supports it.
+    // formData.append('image', yourImageFile);
+
+    try {
+      const response = await wrapperFetch(`${BASE_URL}/api/messages/send`, {
+        method: 'POST',
+        body: formData, // FormData is used when uploading files or mixed content
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        showNotification('Return request sent successfully! We will review it shortly.', 'success');
+        closeReturnModal();
+        // You might want to refresh order messages or change order status if your backend supports it.
+      } else {
+        showNotification(data.message || 'Failed to send return request.', 'error');
+      }
+    } catch (error) {
+      console.error('Error sending return request message:', error);
+      showNotification('An error occurred while sending your return request.', 'error');
+    }
+  };
+
 
   return (
     <div className="opc-card">
@@ -210,12 +286,17 @@ const OrderProductCard = ({
                 Cancel Items
               </button>
             )}
+            {canReturn && ( // Display return button only if order can be returned
+              <button className="opc-return-button" onClick={openReturnModal}>
+                Return Order
+              </button>
+            )}
           </div>
         </div>
       )}
       {/* Cancel Confirmation Modal */}
       {showCancelModal && (
-        <div className="opc-cancel-modal">
+        <div className="opc-cancel-modal opc-modal-overlay"> {/* Added opc-modal-overlay */}
           <div className="opc-modal-content">
             <h3>Cancel Order Items</h3>
             <p>Please select the items you wish to cancel:</p>
@@ -239,6 +320,31 @@ const OrderProductCard = ({
               </button>
               <button className="opc-cancel-action" onClick={closeCancelModal}>
                 Keep Order
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Return Reason Modal */}
+      {showReturnModal && (
+        <div className="opc-return-modal opc-modal-overlay"> {/* Added opc-modal-overlay */}
+          <div className="opc-modal-content">
+            <h3>Request Order Return</h3>
+            <p>Please provide a reason for returning the order:</p>
+            <textarea
+              className="opc-return-reason-input"
+              rows="5"
+              value={returnReason}
+              onChange={(e) => setReturnReason(e.target.value)}
+              placeholder="e.g., Damaged product, wrong item, no longer needed, etc."
+            ></textarea>
+            <div className="opc-modal-footer">
+              <button className="opc-confirm-return" onClick={handleSubmitReturnRequest}>
+                Submit Return Request
+              </button>
+              <button className="opc-cancel-action" onClick={closeReturnModal}>
+                Cancel
               </button>
             </div>
           </div>
