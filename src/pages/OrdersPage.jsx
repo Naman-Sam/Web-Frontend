@@ -23,6 +23,12 @@ const OrdersPage = () => {
   const userId = localStorage.getItem('userId');
   const { showNotification } = useNotification();
 
+  // New state for Return functionality
+  const [showReturnModal, setShowReturnModal] = useState(false);
+  const [returnOrderId, setReturnOrderId] = useState(null);
+  const [returnReason, setReturnReason] = useState('');
+  const [returnDescription, setReturnDescription] = useState('');
+
   // Responsive state: mobile if width ≤480px; tablet if width >480 and ≤768px.
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
   const [isTablet, setIsTablet] = useState(window.innerWidth > 480 && window.innerWidth <= 768);
@@ -110,7 +116,7 @@ const OrdersPage = () => {
           }));
         }
         showNotification(data.message || 'Items successfully cancelled!', 'success');
-        await wrapperFetchOrders(true); // Refresh orders silently.
+        fetchOrders(true); // Refresh orders silently. // CORRECTED: was wrapperFetchOrders
       } else {
         showNotification(data.message || 'Failed to cancel items.', 'error');
       }
@@ -129,6 +135,62 @@ const OrdersPage = () => {
   // --- Utility: Calculate Total Order Value ---
   const calculateTotalValue = (items) => {
     return items.reduce((total, item) => total + item.price * item.quantity, 0);
+  };
+
+  // --- New Return Order Functionality ---
+  const handleInitiateReturn = (orderId) => {
+    setReturnOrderId(orderId);
+    setReturnReason(''); // Reset reason
+    setReturnDescription(''); // Reset description
+    setShowReturnModal(true);
+    // Automatically select the order when initiating a return
+    handleSelectOrder(orderId);
+  };
+
+  const closeReturnModal = () => {
+    setShowReturnModal(false);
+    setReturnOrderId(null);
+    setReturnReason('');
+    setReturnDescription('');
+  };
+
+  const handleSubmitReturn = async () => {
+    if (!returnReason.trim() && !returnDescription.trim()) {
+      showNotification('Please provide a reason or description for the return.', 'warning');
+      return;
+    }
+
+    const messageContent = `Return Request:
+    Reason: ${returnReason || 'No specific reason provided.'}
+    Description: ${returnDescription || 'No additional description.'}`;
+
+    // This part should mimic the message sending logic from OrderMessages.js
+    // You'll need to send this message to your backend's message endpoint.
+    try {
+      const response = await wrapperFetch(`${BASE_URL}/api/messages/send`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          orderId: returnOrderId,
+          sender_id: userId,
+          message: messageContent,
+          // No image for return request for now
+        }),
+      });
+      const data = await response.json();
+      if (response.ok) {
+        showNotification('Return request sent to seller!', 'success');
+        // You might want to also update the order status to "Return Requested"
+        // on the backend and then fetchOrders(true) to reflect it.
+        // For now, we are just sending a message.
+        closeReturnModal();
+      } else {
+        showNotification(data.message || 'Failed to send return request.', 'error');
+      }
+    } catch (error) {
+      console.error('Error sending return message:', error);
+      showNotification('An error occurred while sending return request.', 'error');
+    }
   };
 
   // --- Layouts ---
@@ -171,6 +233,7 @@ const OrdersPage = () => {
                     setSelectedOrder(updatedOrder);
                   }
                 }}
+                onInitiateReturn={handleInitiateReturn} // Pass the new prop
               />
               {selectedOrder && selectedOrder.id === order.id && (
                 <div className="mobile-order-expanded">
@@ -221,6 +284,47 @@ const OrdersPage = () => {
             </div>
           ))}
         </div>
+        {/* Return Modal for Mobile */}
+        {showReturnModal && (
+          <div className="return-modal">
+            <div className="return-modal-content">
+              <h3>Initiate Return for Order #{returnOrderId}</h3>
+              <div className="form-group">
+                <label htmlFor="returnReason">Reason for Return:</label>
+                <select
+                  id="returnReason"
+                  value={returnReason}
+                  onChange={(e) => setReturnReason(e.target.value)}
+                >
+                  <option value="">Select a reason</option>
+                  <option value="Damaged product">Damaged product</option>
+                  <option value="Wrong item received">Wrong item received</option>
+                  <option value="Defective product">Defective product</option>
+                  <option value="Changed mind">Changed mind</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div className="form-group">
+                <label htmlFor="returnDescription">Description:</label>
+                <textarea
+                  id="returnDescription"
+                  value={returnDescription}
+                  onChange={(e) => setReturnDescription(e.target.value)}
+                  rows="4"
+                  placeholder="Please provide details about your return..."
+                ></textarea>
+              </div>
+              <div className="modal-actions">
+                <button onClick={handleSubmitReturn} className="submit-return-button">
+                  Submit Return Request
+                </button>
+                <button onClick={closeReturnModal} className="cancel-return-button">
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     );
   }
@@ -263,6 +367,7 @@ const OrdersPage = () => {
                       setSelectedOrder(updatedOrder);
                     }
                   }}
+                  onInitiateReturn={handleInitiateReturn} // Pass the new prop
                 />
               ))}
             </div>
@@ -316,6 +421,47 @@ const OrdersPage = () => {
             )}
           </div>
         </div>
+        {/* Return Modal for Tablet */}
+        {showReturnModal && (
+          <div className="return-modal">
+            <div className="return-modal-content">
+              <h3>Initiate Return for Order #{returnOrderId}</h3>
+              <div className="form-group">
+                <label htmlFor="returnReason">Reason for Return:</label>
+                <select
+                  id="returnReason"
+                  value={returnReason}
+                  onChange={(e) => setReturnReason(e.target.value)}
+                >
+                  <option value="">Select a reason</option>
+                  <option value="Damaged product">Damaged product</option>
+                  <option value="Wrong item received">Wrong item received</option>
+                  <option value="Defective product">Defective product</option>
+                  <option value="Changed mind">Changed mind</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div className="form-group">
+                <label htmlFor="returnDescription">Description:</label>
+                <textarea
+                  id="returnDescription"
+                  value={returnDescription}
+                  onChange={(e) => setReturnDescription(e.target.value)}
+                  rows="4"
+                  placeholder="Please provide details about your return..."
+                ></textarea>
+              </div>
+              <div className="modal-actions">
+                <button onClick={handleSubmitReturn} className="submit-return-button">
+                  Submit Return Request
+                </button>
+                <button onClick={closeReturnModal} className="cancel-return-button">
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     );
   }
@@ -363,6 +509,7 @@ const OrdersPage = () => {
                     setSelectedOrder(updatedOrder);
                   }
                 }}
+                onInitiateReturn={handleInitiateReturn} // Pass the new prop
               />
             ))}
         </section>
@@ -420,6 +567,47 @@ const OrdersPage = () => {
           )}
         </section>
       </div>
+      {/* Return Modal for Desktop (or a single modal for all layouts) */}
+      {showReturnModal && (
+        <div className="return-modal">
+          <div className="return-modal-content">
+            <h3>Initiate Return for Order #{returnOrderId}</h3>
+            <div className="form-group">
+              <label htmlFor="returnReason">Reason for Return:</label>
+              <select
+                id="returnReason"
+                value={returnReason}
+                onChange={(e) => setReturnReason(e.target.value)}
+              >
+                <option value="">Select a reason</option>
+                <option value="Damaged product">Damaged product</option>
+                <option value="Wrong item received">Wrong item received</option>
+                <option value="Defective product">Defective product</option>
+                <option value="Changed mind">Changed mind</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div className="form-group">
+              <label htmlFor="returnDescription">Description:</label>
+              <textarea
+                id="returnDescription"
+                value={returnDescription}
+                onChange={(e) => setReturnDescription(e.target.value)}
+                rows="4"
+                placeholder="Please provide details about your return..."
+              ></textarea>
+            </div>
+            <div className="modal-actions">
+              <button onClick={handleSubmitReturn} className="submit-return-button">
+                Submit Return Request
+              </button>
+              <button onClick={closeReturnModal} className="cancel-return-button">
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -591,6 +591,8 @@ const autoCropImage = (imageUrl) => {
     return;
   }
 
+  setIsLoading(true);
+
   try {
     // Process images: for each uploaded image not cropped manually, run autoCropImage.
     const processedImages = await Promise.all(
@@ -664,7 +666,10 @@ const autoCropImage = (imageUrl) => {
   } catch (err) {
     showNotification(err.message, 'error');
     console.error(err);
-  }
+  } finally {
+      // Set loading to false regardless of success or failure
+      setIsLoading(false);
+    }
 };
 
   //----------------- RENDER -----------------
@@ -914,7 +919,13 @@ const autoCropImage = (imageUrl) => {
             ))}
           </div>
         </section>
-        <button type="submit">Add Product</button>
+       <button type="submit" disabled={isLoading}>
+        {isLoading ? (
+          <div className="loading-spinner"></div> // This will be your spinner
+        ) : (
+          'Add Product'
+        )}
+      </button>
       </form>
       {/* Custom Context Menu for Categories/Types/Options */}
       {contextMenu.visible && (

@@ -359,7 +359,7 @@ const SuperPoster = ({ BASE_URL }) => {
           </li>
         </ul>
       )}
-
+      
       {/* Crop Modal: Using ImageCropperPosterModal */}
       {showCropModal && croppingImageUrl && (
         <ImageCropperPosterModal

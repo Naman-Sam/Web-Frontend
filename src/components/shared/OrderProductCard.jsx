@@ -11,8 +11,9 @@ const OrderProductCard = ({
   order: initialOrder,
   onCancel,
   onSelect,
-  // New optional callback for order updates (status changes coming through socket)
-  onOrderUpdate = () => {}
+  onOrderUpdate = () => {},
+  // New prop for initiating return
+  onInitiateReturn,
 }) => {
   const [order, setOrder] = useState(initialOrder);
   const [expanded, setExpanded] = useState(false);
@@ -20,22 +21,18 @@ const OrderProductCard = ({
   const [showCancelModal, setShowCancelModal] = useState(false);
   const { showNotification } = useNotification();
 
-  // Destructure order details (using the parent's order id field name "id")
   const { id: orderId, status = 'Unknown', created_at, delivery_type, items = [] } = order;
 
-  // Define static shop pickup location
   const shopLocation = {
     address: 'Seema Enterprises, 20, New Bazar, Kurukshetra, Thanesar, Haryana 136118, India',
     googleMapsLink:
       'https://maps.app.goo.gl/PiLLRDkUXKWk4WrF7',
   };
 
-  // Format the order date
   const orderDate = created_at
     ? new Date(created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
     : 'Unknown';
 
-  // Allow cancellation only if status is not one of these values
   const canCancel =
     status.toLowerCase() !== 'completed' &&
     status.toLowerCase() !== 'readyforpickup' &&
@@ -43,7 +40,14 @@ const OrderProductCard = ({
     status.toLowerCase() !== 'delivered' &&
     status.toLowerCase() !== 'sent';
 
-  // Toggle expansion of order details. Call onSelect (from parent) when expanding.
+  // Define when an order can be returned.
+  // For simplicity, let's say it can be returned if it's 'delivered' and not already 'returned' or 'cancelled'.
+  const canReturn =
+    status.toLowerCase() === 'delivered' &&
+    status.toLowerCase() !== 'returned' &&
+    status.toLowerCase() !== 'cancelled';
+
+
   const toggleExpand = () => {
     setExpanded(!expanded);
     if (!expanded) {
@@ -51,18 +55,13 @@ const OrderProductCard = ({
     }
   };
 
-  // SOCKET: Use a ref to hold the socket instance so that we don’t recreate it on every render.
   const socketRef = useRef(null);
   useEffect(() => {
     socketRef.current = io(SOCKET_URL);
-    // Join the room for this order
     socketRef.current.emit('joinRoom', `order_${orderId}`);
 
-    // Listen for order status updates – note the event name is now "orderStatusUpdated"
     socketRef.current.on('orderStatusUpdated', (data) => {
-      // Ensure the payload has the order property and compare order IDs
       if (data && data.order && String(data.order.id) === String(orderId)) {
-        // Update order status using the nested data; adjust property name as needed (e.g. order_status)
         const updatedOrder = { ...order, status: data.order.order_status };
         setOrder(updatedOrder);
         onOrderUpdate(updatedOrder);
@@ -76,7 +75,6 @@ const OrderProductCard = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orderId, showNotification]);
 
-  // Toggle selection for cancellation modal
   const toggleItemSelection = (productId) => {
     setSelectedItems((prevItems) =>
       prevItems.includes(productId)
@@ -85,7 +83,6 @@ const OrderProductCard = ({
     );
   };
 
-  // Open cancellation modal (prevent card expansion)
   const openCancelModal = (e) => {
     e.stopPropagation();
     if (!canCancel) {
@@ -96,13 +93,11 @@ const OrderProductCard = ({
     setShowCancelModal(true);
   };
 
-  // Close cancellation modal and clear selections
   const closeCancelModal = () => {
     setShowCancelModal(false);
     setSelectedItems([]);
   };
 
-  // Submit cancellation request.
   const submitCancelRequest = async () => {
     if (selectedItems.length === 0) {
       showNotification('Please select at least one item to cancel', 'warning');
@@ -119,6 +114,17 @@ const OrderProductCard = ({
       console.error('Error cancelling items:', error);
       showNotification('An error occurred while cancelling items', 'error');
     }
+  };
+
+  // New handler for the Return button
+  const handleReturnClick = (e) => {
+    e.stopPropagation(); // Prevent card from expanding
+    if (!canReturn) {
+      showNotification('This order cannot be returned.', 'error');
+      return;
+    }
+    // Call the parent's callback to open the return modal on the OrdersPage
+    onInitiateReturn(orderId);
   };
 
   return (
@@ -208,6 +214,12 @@ const OrderProductCard = ({
             {canCancel && (
               <button className="opc-cancel-button" onClick={openCancelModal}>
                 Cancel Items
+              </button>
+            )}
+            {/* New Return Button */}
+            {canReturn && (
+              <button className="opc-return-button" onClick={handleReturnClick}>
+                Return
               </button>
             )}
           </div>

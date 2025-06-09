@@ -1,64 +1,118 @@
+/* --- Base Layout for Orders Page --- */
 .orders-layout {
     display: flex;
     gap: 20px; /* Space between sections */
     margin-top: 20px;
-    flex-wrap: wrap; /* Enable wrapping for smaller screens */
+    flex-wrap: wrap; /* Allows sections to wrap onto the next line if needed */
+    justify-content: center; /* Center the sections when they wrap */
+    align-items: flex-start; /* Align sections to the top */
 }
 
+/* --- Styles for Individual Sections --- */
 .left-section-inforce,
 .middle-section-inforce,
 .right-section-inforce {
-    flex: 1; /* Equal width for each section */
+    flex: 1; /* Allows sections to grow and shrink, taking equal available space */
+    min-width: 300px; /* Prevents sections from becoming too narrow */
     background-color: #fff; /* White background for each section */
-    padding: 20px; /* Add spacing inside sections */
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    min-width: 300px; /* Ensure sections don't shrink too small */
-    max-height: 85vh; /* Limit height */
-    overflow-y: auto; /* Enable scrolling for long content */
+    padding: 20px; /* Consistent internal spacing */
+    border-radius: 10px; /* Rounded corners for a softer look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    max-height: 85vh; /* Limits the height of the sections */
+    overflow-y: auto; /* Enables vertical scrolling if content overflows */
+    display: flex; /* Use flexbox for internal content alignment */
+    flex-direction: column; /* Stack content vertically within sections */
 }
 
+/* --- Section Headings --- */
 .left-section-inforce h2,
 .middle-section-inforce h2,
 .right-section-inforce h2 {
-    font-size: 1.5rem;
-    color: #ff6f00; /* Vibrant orange for titles */
-    margin-bottom: 10px;
-    border-bottom: 2px solid #ddd; /* Add a bottom border for section headings */
-    padding-bottom: 8px; /* Add spacing beneath the title */
+    font-size: 1.5rem; /* Standard heading size */
+    color: #ff6f00; /* Vibrant orange for titles, consistent with your design */
+    margin-top: 0; /* Remove default top margin */
+    margin-bottom: 15px; /* More space below the heading */
+    border-bottom: 2px solid #ddd; /* A clean separator for headings */
+    padding-bottom: 10px; /* Space between text and border */
+    text-align: left; /* Ensure headings are always left-aligned */
 }
 
+/* --- Specific Styles for Middle and Right Sections (Initially) --- */
 .middle-section-inforce,
 .right-section-inforce {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    flex-direction: column; /* Stack content vertically */
+    /* These sections usually start centered for "Select an order" messages */
+    justify-content: flex-start; /* Align content to the top */
+    align-items: flex-start; /* Align content to the left */
+    text-align: left; /* Default text alignment */
+    /* Remove the previous 'center' alignment if content will be dynamic and left-aligned */
 }
 
-.middle-section-inforce p1,
-.right-section-inforce p1 {
+.middle-section-inforce p, /* Changed p1 to p as it's more standard */
+.right-section-inforce p { /* Changed p1 to p as it's more standard */
     font-size: 14px;
     color: #555;
     margin: 0;
+    line-height: 1.5; /* Improve readability of text */
+    text-align: center; /* Keep the initial 'select an order' message centered */
+    width: 100%; /* Ensure centering works */
+    padding-top: 20px; /* Add some space from the heading */
 }
 
-/* Responsive Adjustments */
+
+/* --- Responsive Adjustments --- */
+@media screen and (max-width: 1024px) {
+    /* Adjust min-width for slightly smaller desktop screens before stacking */
+    .left-section-inforce,
+    .middle-section-inforce,
+    .right-section-inforce {
+        min-width: 280px; /* Allow sections to be slightly smaller */
+    }
+}
+
 @media screen and (max-width: 768px) {
     .orders-layout {
-        flex-direction: column; /* Stack sections vertically on smaller screens */
+        flex-direction: column; /* Stack sections vertically on tablet/mobile */
+        gap: 0; /* Remove gap between stacked sections, use margin-bottom instead */
     }
 
     .left-section-inforce,
     .middle-section-inforce,
     .right-section-inforce {
+        width: 100%; /* Take full width when stacked */
         margin-bottom: 20px; /* Add spacing between stacked sections */
-        max-height: unset; /* Remove height restriction for mobile */
+        max-height: unset; /* Remove height restriction for mobile, allowing content to expand */
+        overflow-y: visible; /* Allow content to overflow without individual scrollbars if preferred */
     }
 
     .middle-section-inforce,
     .right-section-inforce {
-        text-align: left; /* Align text to left on smaller screens for readability */
+        /* On smaller screens, these sections should behave like standard blocks */
+        text-align: left; /* Align text to left for readability */
+        align-items: flex-start; /* Ensure content is aligned to the start */
+        justify-content: flex-start; /* Ensure content starts from the top */
+    }
+
+    .middle-section-inforce p,
+    .right-section-inforce p {
+        text-align: left; /* Ensure messages in these sections are left-aligned */
+        padding-top: 0; /* Adjust padding as needed for mobile */
+    }
+}
+
+/* Optional: Additional small screen adjustments for even smaller devices */
+@media screen and (max-width: 480px) {
+    .left-section-inforce,
+    .middle-section-inforce,
+    .right-section-inforce {
+        padding: 15px; /* Slightly less padding on very small screens */
+        border-radius: 8px; /* Slightly smaller border-radius */
+    }
+
+    .left-section-inforce h2,
+    .middle-section-inforce h2,
+    .right-section-inforce h2 {
+        font-size: 1.3rem; /* Slightly smaller heading size */
+        margin-bottom: 10px;
+        padding-bottom: 5px;
     }
 }
