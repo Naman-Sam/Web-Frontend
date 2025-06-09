@@ -39,14 +39,13 @@ const OrderProductCard = ({
 
   // Allow cancellation only if status is not one of these values
   const canCancel =
-    status.toLowerCase() !== 'completed' &&
     status.toLowerCase() !== 'readyforpickup' &&
     status.toLowerCase() !== 'cancelled' &&
     status.toLowerCase() !== 'delivered' && // Orders already delivered should not be cancelled
     status.toLowerCase() !== 'sent';
 
   // Allow return only if status is 'delivered'. You might add a time limit here as well.
-  const canReturn = status.toLowerCase() === 'delivered';
+  const canReturn = status.toLowerCase() === 'delivered'|| status.toLowerCase() === 'completed';
 
   // Toggle expansion of order details. Call onSelect (from parent) when expanding.
   const toggleExpand = () => {
