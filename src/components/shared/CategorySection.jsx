@@ -78,11 +78,16 @@ const CategorySection = ({ BASE_URL, userId }) => {
   };
 
   /* ─────────────── 4. AUTO-SWITCH CATEGORIES ───────────── */
-  useEffect(() => {
-    if (categories.length) selectRandomCategory();
-    const id = setInterval(selectRandomCategory, 8000);
-    return () => clearInterval(id);
-  }, [categories]);
+// 1️⃣ Start the interval only once (on mount) …
+useEffect(() => {
+  const id = setInterval(selectRandomCategory, 20000);
+  return () => clearInterval(id);
+}, []); // empty deps -> runs once
+
+// 2️⃣ Once categories arrive the first time, pick an initial random category
+useEffect(() => {
+  if (categories.length) selectRandomCategory();
+}, [categories]);
 
   /* ─────────────── 5. SCROLL ARROWS ────────────────────── */
   const scroll = (dir) =>
