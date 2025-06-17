@@ -108,7 +108,7 @@ const CategorySection = ({ BASE_URL, userId }) => {
     if (categories.length) selectRandomCategory();
     const interval = setInterval(() => {
       selectRandomCategory();
-    }, 8000); // Switch category every 8 seconds
+    }, 20000); // Switch category every 8 seconds
     return () => clearInterval(interval);
   }, [categories]);
 
